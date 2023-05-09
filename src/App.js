@@ -1,5 +1,6 @@
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
+import "./App.css"
 import { useState } from "react";
 function App() {
   const expenses = [
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <div>
+      <h1>EXPENSE TRACKER</h1>
       <NewExpense onAddExpense={addExpenseHandler}></NewExpense>
       <Expenses items={newExpenses}></Expenses>
     </div>

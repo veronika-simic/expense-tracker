@@ -4,10 +4,11 @@ import Card from "../UI/Card";
 function ExpenseItem(props) {
   return (
     <Card>
-      <div>{props.item.title}</div>
-      <h2>{props.item.amount}</h2>
-
-      <ExpenseDate date={props.item.date}></ExpenseDate>
+      <div className="expense-item">
+        <ExpenseDate date={props.item.date}/>
+        <h2>{props.item.title}</h2>
+        <h2>{props.item.amount}</h2>
+      </div>
     </Card>
   );
 }
