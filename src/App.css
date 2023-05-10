@@ -4,10 +4,10 @@ body {
   display: flex;
   justify-content: center;
   font-family: "Roboto", sans-serif;
+  margin-top: 3rem;
 }
 
 h1 {
   font-family: "Montserrat", sans-serif;
-  font-size: 4rem;
-  text-align: center;
+  font-size: 3.5rem;
 }

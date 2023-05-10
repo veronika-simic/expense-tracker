@@ -6,7 +6,7 @@ function ExpenseItem(props) {
     <Card>
       <h2 className="title">{props.item.title}</h2>
       <ExpenseDate date={props.item.date} />
-      <h2 className="amount">{props.item.amount}</h2>
+      <h2 className="amount">$ {props.item.amount}</h2>
     </Card>
   );
 }
