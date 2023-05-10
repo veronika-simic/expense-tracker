@@ -6,9 +6,9 @@ function ExpenseDate(props) {
   const day = props.date.toLocaleString("en-US", { day: "2-digit" });
   return (
     <Card>
-      <h2>{year}</h2>
-      <h2>{month}</h2>
-      <h2>{day}</h2>
+      <h2 className="date">
+        {day} {month} {year}
+      </h2>
     </Card>
   );
 }

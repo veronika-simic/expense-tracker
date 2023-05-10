@@ -4,12 +4,11 @@ import ExpenseFilter from "./ExpenseFilter";
 import "./Expenses.css";
 function Expenses(props) {
   return (
-    <Card>
-      <ExpenseFilter></ExpenseFilter>
+    <div className="container">
       {props.items.map((item) => (
         <ExpenseItem item={item} key={item.id} />
       ))}
-    </Card>
+    </div>
   );
 }
 
