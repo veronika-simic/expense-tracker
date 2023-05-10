@@ -8,7 +8,7 @@ function ExpensesAmount(props) {
           })
           .reduce((prev, curr) => {
             return prev + curr;
-          }).toFixed(2)} in total of {props.items.length} items
+          }).toFixed(2)} <br/> in total of {props.items.length} items
       </h2>
     </div>
   );
