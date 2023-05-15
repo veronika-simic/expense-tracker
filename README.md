@@ -1,7 +1,6 @@
 # Project Name
 
 > Expense tracker application that allows user to track their expenses
-> Live demo [_here_](https://lovely-daifuku-962620.netlify.app/).
 
 ## Table of Contents
 
