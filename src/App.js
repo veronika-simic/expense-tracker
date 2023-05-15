@@ -48,7 +48,6 @@ function App() {
       <NavigationBar></NavigationBar>
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
-
         <Route
           path="/newexpense"
           element={<NewExpense onAddExpense={addExpenseHandler}></NewExpense>}

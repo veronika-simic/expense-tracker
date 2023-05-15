@@ -5,11 +5,9 @@ body {
   justify-content: center;
   font-family: "Roboto", sans-serif;
   margin-top: 2rem;
-  overflow: hidden;
 }
 
 h1 {
   font-family: "Montserrat", sans-serif;
   font-size: 3.5rem;
 }
-

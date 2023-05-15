@@ -47,7 +47,7 @@ function HomePage() {
   const [newExpenses, setNewExpenses] = useState(expenses);
 
   return (
-    <div>
+    <div className="home-page">
       <ExpenseSearch></ExpenseSearch>
       <ExpensesAmount items={newExpenses} />
       <Expenses items={newExpenses}></Expenses>
