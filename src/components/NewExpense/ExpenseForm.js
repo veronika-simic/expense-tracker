@@ -30,14 +30,17 @@ function ExpenseForm(props) {
   }
   return (
     <form onSubmit={submitHandler}>
-      <label>Title</label>
+      <label for="title">Title</label>
       <input
         type="text"
         name="title"
         value={title}
         onChange={titleChangeHandler}
+        id="title"
+        placeholder="Money spent on...."
       ></input>
-      <label>Amount</label>
+
+      <label for="amount">Amount</label>
       <input
         type="number"
         name="amount"
@@ -45,8 +48,11 @@ function ExpenseForm(props) {
         step="0.01"
         value={amount}
         onChange={amountChangeHandler}
+        id="amount"
+        placeholder="Amount spent..."
       ></input>
-      <label>Date</label>
+
+      <label for="date">Date</label>
       <input
         type="date"
         name="date"
@@ -54,7 +60,20 @@ function ExpenseForm(props) {
         max="2024-01-01"
         value={date}
         onChange={dateChangeHandler}
+        id="date"
+        placeholder="Date of purchase"
       ></input>
+
+      <label for="description">Description</label>
+      <input
+        type="text"
+        name="description"
+        id="description"
+        minlength="10"
+        size="20"
+        placeholder="Where did you buy it?"
+      ></input>
+
       <button type="submit">Add expense</button>
     </form>
   );

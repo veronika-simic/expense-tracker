@@ -1,8 +1,9 @@
-import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
-import "./App.css"
+import "./App.css";
 import { useState } from "react";
-import ExpensesAmount from "./components/Expenses/ExpensesAmount";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./components/pages/Home/HomePage";
+import NavigationBar from "./components/NavigationBar/NavigationBar";
 function App() {
   const expenses = [
     { id: 1, title: "Dog food", amount: 24.56, date: new Date(2023, 2, 3) },
@@ -42,15 +43,30 @@ function App() {
   function addExpenseHandler(expense) {
     setNewExpenses((prevExpenses) => [expense, ...newExpenses]);
   }
-
   return (
-    <div>
-      <h1>EXPENSE <br></br> TRACKER</h1>
-      {/* <NewExpense onAddExpense={addExpenseHandler}></NewExpense> */}
-      <ExpensesAmount items={newExpenses}/>
-      <Expenses items={newExpenses}></Expenses>
-    </div>
+    <>
+      <NavigationBar></NavigationBar>
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
+        <Route
+          path="/newexpense"
+          element={<NewExpense onAddExpense={addExpenseHandler}></NewExpense>}
+        />
+      </Routes>
+    </>
   );
 }
 
 export default App;
+
+{
+  /* <div>
+      <div>
+        <h1> 
+          EXPENSE <br></br> TRACKER
+        </h1>
+        <ExpenseSearch></ExpenseSearch>
+        <ExpensesAmount items={newExpenses} />
+        <Expenses items={newExpenses}></Expenses>
+      </div> */
+}
