@@ -1,10 +1,8 @@
-import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 import "./App.css";
 import { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import ExpensesAmount from "./components/Expenses/ExpensesAmount";
-import ExpenseSearch from "./components/Expenses/ExpenseSearch";
+import { Routes, Route} from "react-router-dom";
+import HomePage from "./components/pages/Home/HomePage";
 function App() {
   const expenses = [
     { id: 1, title: "Dog food", amount: 24.56, date: new Date(2023, 2, 3) },
@@ -40,36 +38,31 @@ function App() {
       date: new Date(2023, 2, 3),
     },
   ];
-  const [newExpenses, setNewExpenses] = useState(expenses);
-  const navigate = useNavigate();
+  const [newExpenses, setNewExpenses] = useState(expenses)
   function addExpenseHandler(expense) {
     setNewExpenses((prevExpenses) => [expense, ...newExpenses]);
   }
-  function navigateToNewExpense() {
-    navigate("/newexpense",);
-  }
-
   return (
-    <div>
+    <Routes>
+      <Route path="/" element={<HomePage/>}></Route>
+      <Route
+        path="/newexpense"
+        element={<NewExpense onAddExpense={addExpenseHandler}></NewExpense>}
+      />
+    </Routes>
+  );
+}
+
+export default App;
+
+{
+  /* <div>
       <div>
-        <h1>
+        <h1> 
           EXPENSE <br></br> TRACKER
         </h1>
         <ExpenseSearch></ExpenseSearch>
         <ExpensesAmount items={newExpenses} />
         <Expenses items={newExpenses}></Expenses>
-      </div>
-      <button onClick={navigateToNewExpense}>+</button>
-      <Routes>
-
-      <Route
-          path="/newexpense"
-          element={<NewExpense onAddExpense={addExpenseHandler}></NewExpense>}
-        />
-      </Routes>
-      
-    </div>
-  );
+      </div> */
 }
-
-export default App;
