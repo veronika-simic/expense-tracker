@@ -10,6 +10,7 @@ function NewExpense(props) {
     }
   return (
     <div>
+      <h2>Add Expense</h2>
       <ExpenseForm onSaveExpenseData={saveExpenseDataHandler}></ExpenseForm>
     </div>
   );
