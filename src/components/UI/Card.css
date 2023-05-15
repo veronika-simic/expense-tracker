@@ -25,7 +25,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
   box-sizing: border-box;
   transition: 0.8s;
   transform: translateY(-100px);
