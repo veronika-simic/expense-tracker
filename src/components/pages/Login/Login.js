@@ -1,5 +1,6 @@
 import "./Login.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 function Login() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -10,7 +11,7 @@ function Login() {
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/i;
     return emailRegex.test(email);
   };
-
+  const navigate = useNavigate();
   function emailHandler(event) {
     setEmail(event.target.value);
     if (!validateEmail(email)) {
@@ -27,6 +28,10 @@ function Login() {
     } else {
       setPasswordError("");
     }
+  }
+
+  function navigateToSignUp() {
+    navigate("/signup");
   }
 
   return (
@@ -46,7 +51,7 @@ function Login() {
         <button>Log in</button>
       </div>
       <h3>
-        New user? <a href="/">Sign up</a>
+        New user? <button onClick={navigateToSignUp}>Sign up</button>
       </h3>
     </form>
   );
