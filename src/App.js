@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./components/pages/Home/HomePage";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
+import Login from "./components/pages/Login/Login";
 function App() {
   const expenses = [
     { id: 1, title: "Dog food", amount: 24.56, date: new Date(2023, 2, 3) },
@@ -47,7 +48,8 @@ function App() {
     <>
       <NavigationBar></NavigationBar>
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
+        <Route path="/" element={<Login />}></Route>
+        <Route path="/home" element={<HomePage />}></Route>
         <Route
           path="/newexpense"
           element={<NewExpense onAddExpense={addExpenseHandler}></NewExpense>}

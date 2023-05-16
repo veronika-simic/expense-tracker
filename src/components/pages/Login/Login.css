@@ -1,0 +1,16 @@
+.login-contanier {
+  background-color: #15d64b;
+  border-radius: 5%;
+  color: white;
+  row-gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  text-align: center;
+  margin: 3rem auto 0 auto;
+}
+
+label {
+  display: block;
+}
+
