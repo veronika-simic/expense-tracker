@@ -27,13 +27,12 @@
 - React - version 18.2.0
 - Express - version 4.17.1
 
-
 ## Features
 
 - User can login by providing a valid email address and password
 - Password has to have at least 6 characters and 1 number
 - User can input expenses by specifiying title, amount, date of purchase and description
-
+- User can preview expenses
 ## Screenshots
 
 

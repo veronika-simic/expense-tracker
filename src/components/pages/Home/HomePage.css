@@ -1,11 +1,16 @@
 button {
-    border: none;
-    border-radius: 50%;
-    background-color: red;
-    color: white;
-    font-size: 3rem;
-    height: 4rem;
-    text-align: center;
-    width: 4rem;
-    float: right;
+  border: none;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 3rem;
+  height: 4rem;
+  text-align: center;
+  width: 4rem;
+  float: right;
+}
+
+.customization {
+    display: flex;
+    justify-content: flex-start;
 }
