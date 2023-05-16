@@ -34,17 +34,12 @@ function Login() {
       <h2>Login</h2>
       <div>
         <label htmlFor="email">Email</label>
-        <input type="email" id="email" required onChange={emailHandler}></input>
+        <input type="email" id="email" onChange={emailHandler}></input>
         {emailError ? <p>{emailError}</p> : ""}
       </div>
       <div>
         <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          required
-          onChange={passwordHandler}
-        ></input>
+        <input type="password" id="password" onChange={passwordHandler}></input>
         {passwordError ? <p>{passwordError}</p> : ""}
       </div>
       <div>
