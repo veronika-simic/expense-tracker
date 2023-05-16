@@ -5,12 +5,12 @@
   row-gap: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 25%;
   text-align: center;
+  margin: 3rem auto 0 auto;
 }
 
 label {
   display: block;
 }
+

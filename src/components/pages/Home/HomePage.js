@@ -53,7 +53,7 @@ function HomePage() {
         <ExpensesAmount items={newExpenses} />
       </div>
       <Expenses items={newExpenses}></Expenses>
-      <button onClick={navigateToNewExpense}>+</button>
+      <button className="new-expense" onClick={navigateToNewExpense}>+</button>
     </>
   );
 }
