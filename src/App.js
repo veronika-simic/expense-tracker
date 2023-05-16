@@ -59,14 +59,3 @@ function App() {
 
 export default App;
 
-{
-  /* <div>
-      <div>
-        <h1> 
-          EXPENSE <br></br> TRACKER
-        </h1>
-        <ExpenseSearch></ExpenseSearch>
-        <ExpensesAmount items={newExpenses} />
-        <Expenses items={newExpenses}></Expenses>
-      </div> */
-}

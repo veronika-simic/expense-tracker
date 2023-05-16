@@ -4,7 +4,7 @@ import ExpenseSearch from "../../Expenses/ExpenseSearch";
 import ExpensesAmount from "../../Expenses/ExpensesAmount";
 import Expenses from "../../Expenses/Expenses";
 import { useState } from "react";
-import NavigationBar from "../../NavigationBar/NavigationBar";
+
 function HomePage() {
   const expenses = [
     { id: 1, title: "Dog food", amount: 24.56, date: new Date(2023, 2, 3) },
@@ -47,12 +47,14 @@ function HomePage() {
   const [newExpenses, setNewExpenses] = useState(expenses);
 
   return (
-    <div className="home-page">
-      <ExpenseSearch></ExpenseSearch>
-      <ExpensesAmount items={newExpenses} />
+    <>
+      <div className="customization">
+        <ExpenseSearch></ExpenseSearch>
+        <ExpensesAmount items={newExpenses} />
+      </div>
       <Expenses items={newExpenses}></Expenses>
       <button onClick={navigateToNewExpense}>+</button>
-    </div>
+    </>
   );
 }
 
