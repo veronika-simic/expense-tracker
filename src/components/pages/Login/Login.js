@@ -1,16 +1,51 @@
 import "./Login.css";
-
+import { useState } from "react";
 function Login() {
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const validateEmail = (email) => {
+    const emailRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/i;
+    return emailRegex.test(email);
+  };
+
+  function emailHandler(event) {
+    setEmail(event.target.value);
+    if (!validateEmail(email)) {
+      setEmailError("Please input the correct format");
+    } else {
+      setEmailError("");
+    }
+  }
+
+  function passwordHandler(event) {
+    setPassword(event.target.value);
+    if (password.length < 6) {
+      setPasswordError("Your password is too short!");
+    } else {
+      setPasswordError("");
+    }
+  }
+
   return (
     <form className="login-contanier">
       <h2>Login</h2>
       <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" required></input>
+        <label htmlFor="email">Email</label>
+        <input type="email" id="email" required onChange={emailHandler}></input>
+        {emailError ? <p>{emailError}</p> : ""}
       </div>
       <div>
-        <label for="password">Password</label>
-        <input type="password" id="password" required></input>
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          required
+          onChange={passwordHandler}
+        ></input>
+        {passwordError ? <p>{passwordError}</p> : ""}
       </div>
       <div>
         <button>Log in</button>
