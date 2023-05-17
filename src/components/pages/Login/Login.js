@@ -18,8 +18,7 @@ function Login() {
   }
 
   return (
-    <form className="login-contanier">
-      <h2>Login</h2>
+    <form className="login-container">
       <div>
         <label htmlFor="email">Email</label>
         <input type="email" id="email" onChange={handleEmailChange}></input>
@@ -31,11 +30,11 @@ function Login() {
         {passwordError ? <p>{passwordError}</p> : ""}
       </div>
       <div>
-        <button disabled={hasErrors()}>Log in</button>
+        <button disabled={hasErrors()}>LOGIN</button>
       </div>
-      <h3>
+    {/*   <h3>
         New user? <button onClick={navigateToSignUp}>Sign up</button>
-      </h3>
+      </h3> */}
     </form>
   );
 }
