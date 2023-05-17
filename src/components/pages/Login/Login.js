@@ -1,34 +1,16 @@
 import "./Login.css";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useFormValidation from "../../../hooks/useFormValidation";
 function Login() {
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const validateEmail = (email) => {
-    const emailRegex =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/i;
-    return emailRegex.test(email);
-  };
   const navigate = useNavigate();
-  function emailHandler(event) {
-    setEmail(event.target.value);
-    if (!validateEmail(email)) {
-      setEmailError("Please input the correct format");
-    } else {
-      setEmailError("");
-    }
-  }
-
-  function passwordHandler(event) {
-    setPassword(event.target.value);
-    if (password.length < 6) {
-      setPasswordError("Your password is too short!");
-    } else {
-      setPasswordError("");
-    }
-  }
+  const {
+    email,
+    password,
+    emailError,
+    passwordError,
+    handleEmailChange,
+    handlePasswordChange,
+  } = useFormValidation();
 
   function navigateToSignUp() {
     navigate("/signup");
@@ -39,12 +21,12 @@ function Login() {
       <h2>Login</h2>
       <div>
         <label htmlFor="email">Email</label>
-        <input type="email" id="email" onChange={emailHandler}></input>
+        <input type="email" id="email" onChange={handleEmailChange}></input>
         {emailError ? <p>{emailError}</p> : ""}
       </div>
       <div>
         <label htmlFor="password">Password</label>
-        <input type="password" id="password" onChange={passwordHandler}></input>
+        <input type="password" id="password" onChange={handlePasswordChange}></input>
         {passwordError ? <p>{passwordError}</p> : ""}
       </div>
       <div>
