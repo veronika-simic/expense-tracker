@@ -1,0 +1,44 @@
+.info-container {
+    background-color: #15d64b;
+    border-radius: 5%;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    margin: 3rem auto 0 auto;
+    width: 25%;
+  }
+  
+  .info-container label {
+    display: block;
+    font-size: 1.5rem;
+  }
+  
+  .info-container input {
+    box-sizing: border-box;
+    margin: 1rem 0;
+    width: 80%;
+  }
+  
+  .info-container div button {
+    background-color: #15d64b;
+    border-radius: 5%;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 2rem 0;
+    padding: 1rem 3rem;
+    border: 3px solid white;
+    color: white;
+    width: 70%;
+  }
+  
+  .info-container div button:disabled {
+    border: 3px solid #539165;
+    color: #539165;
+  }
+  
+  .info-container div button:enabled:hover {
+    cursor: pointer;
+  }
+  

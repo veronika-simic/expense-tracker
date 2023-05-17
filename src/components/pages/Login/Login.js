@@ -1,4 +1,4 @@
-import "./Login.css";
+import "../../../styles/Form.css"
 import { useNavigate } from "react-router-dom";
 import useFormValidation from "../../../hooks/useFormValidation";
 function Login() {
@@ -18,7 +18,7 @@ function Login() {
   }
 
   return (
-    <form className="login-container">
+    <form className="info-container">
       <div>
         <label htmlFor="email">Email</label>
         <input type="email" id="email" onChange={handleEmailChange}></input>
