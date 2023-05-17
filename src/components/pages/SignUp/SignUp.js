@@ -1,6 +1,8 @@
 import useFormValidation from "../../../hooks/useFormValidation";
 import { useNavigate } from "react-router-dom";
 import "../../../styles/Form.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function SignUp() {
   const navigate = useNavigate();
   const {
@@ -50,8 +52,9 @@ function SignUp() {
           Sign up
         </button>
       </div>
-      {/* make it a modal */}
-      {/* {password === confirmedPassword ? "" : "Passwords don't match"} */}
+      {password === confirmedPassword ? "" :  <ToastContainer />}
+
+     
     </form>
   );
 }

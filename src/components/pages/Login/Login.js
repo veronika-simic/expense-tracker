@@ -1,6 +1,8 @@
-import "../../../styles/Form.css"
+import "../../../styles/Form.css";
 import { useNavigate } from "react-router-dom";
 import useFormValidation from "../../../hooks/useFormValidation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function Login() {
   const navigate = useNavigate();
   const {
@@ -17,6 +19,16 @@ function Login() {
     navigate("/signup");
   }
 
+  function displayLoginConfirmation() {
+    toast("Logged in successfully", {
+      autoClose: 15000,
+      position: "bottom-left",
+      theme: "colored", // Set the duration to 8 seconds (8000 milliseconds)
+      closeButton: false, // Disable the close button for this toast
+      className: "custom-toast",
+    });
+  }
+
   return (
     <form className="info-container">
       <div>
@@ -26,13 +38,20 @@ function Login() {
       </div>
       <div>
         <label htmlFor="password">Password</label>
-        <input type="password" id="password" onChange={handlePasswordChange}></input>
+        <input
+          type="password"
+          id="password"
+          onChange={handlePasswordChange}
+        ></input>
         {passwordError ? <p>{passwordError}</p> : ""}
       </div>
       <div>
-        <button disabled={hasErrors()}>LOGIN</button>
+        <ToastContainer />
+        <button disabled={hasErrors()} onClick={displayLoginConfirmation}>
+          LOGIN
+        </button>
       </div>
-    {/*   <h3>
+      {/*   <h3>
         New user? <button onClick={navigateToSignUp}>Sign up</button>
       </h3> */}
     </form>
