@@ -19,14 +19,12 @@ function Login() {
     navigate("/signup");
   }
 
+  function navigateToHomePage() {
+    navigate("/home");
+  }
+
   function displayLoginConfirmation() {
-    toast("Logged in successfully", {
-      autoClose: 15000,
-      position: "bottom-left",
-      theme: "colored", // Set the duration to 8 seconds (8000 milliseconds)
-      closeButton: false, // Disable the close button for this toast
-      className: "custom-toast",
-    });
+    toast.success("Logged in successfully");
   }
 
   return (
@@ -46,14 +44,16 @@ function Login() {
         {passwordError ? <p>{passwordError}</p> : ""}
       </div>
       <div>
-        <ToastContainer />
-        <button disabled={hasErrors()} onClick={displayLoginConfirmation}>
+        <button
+          disabled={hasErrors()}
+          onClick={() => {
+            displayLoginConfirmation();
+            navigateToHomePage();
+          }}
+        >
           LOGIN
         </button>
       </div>
-      {/*   <h3>
-        New user? <button onClick={navigateToSignUp}>Sign up</button>
-      </h3> */}
     </form>
   );
 }

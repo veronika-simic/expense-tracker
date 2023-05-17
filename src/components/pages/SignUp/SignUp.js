@@ -22,6 +22,10 @@ function SignUp() {
     navigate("/home");
   }
 
+  function displaySignUpInformation() {
+    toast.success("User signed up!");
+  }
+
   return (
     <form className="info-container">
       <div>
@@ -48,13 +52,16 @@ function SignUp() {
         {confirmedPasswordError ? <p>{confirmedPasswordError}</p> : ""}
       </div>
       <div>
-        <button disabled={hasErrors()} onClick={navigateToHomePage}>
+        <button
+          disabled={hasErrors()}
+          onClick={() => {
+            displaySignUpInformation();
+            navigateToHomePage();
+          }}
+        >
           Sign up
         </button>
       </div>
-      {password === confirmedPassword ? "" :  <ToastContainer />}
-
-     
     </form>
   );
 }
