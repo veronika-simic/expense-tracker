@@ -1,5 +1,7 @@
 import useFormValidation from "../../../hooks/useFormValidation";
+import { useNavigate } from "react-router-dom";
 function SignUp() {
+  const navigate = useNavigate()
   const {
     email,
     password,
@@ -12,6 +14,10 @@ function SignUp() {
     handleConfirmedPasswordChange,
     hasErrors
   } = useFormValidation(true);
+
+  function navigateToHomePage() {
+    navigate("/home");
+  }
 
   return (
     <form className="login-contanier">
@@ -39,7 +45,7 @@ function SignUp() {
         {confirmedPasswordError ? <p>{confirmedPasswordError}</p> : ""}
       </div>
       <h3>
-        <button disabled={hasErrors()}>Sign up</button>
+        <button disabled={hasErrors()} onClick={navigateToHomePage}>Sign up</button>
       </h3>
       {password === confirmedPassword ? "" : "Passwords don't match"}
     </form>
