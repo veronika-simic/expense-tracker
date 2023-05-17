@@ -10,6 +10,7 @@ function Login() {
     passwordError,
     handleEmailChange,
     handlePasswordChange,
+    hasErrors,
   } = useFormValidation();
 
   function navigateToSignUp() {
@@ -30,7 +31,7 @@ function Login() {
         {passwordError ? <p>{passwordError}</p> : ""}
       </div>
       <div>
-        <button>Log in</button>
+        <button disabled={hasErrors()}>Log in</button>
       </div>
       <h3>
         New user? <button onClick={navigateToSignUp}>Sign up</button>

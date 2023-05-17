@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function useFormValidation() {
+export default function useFormValidation(shouldIncludeConfirmedPassword) {
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -38,8 +38,23 @@ export default function useFormValidation() {
     setConfirmedPassword(value);
     if (value.length < 6) {
       setConfirmedPasswordError("Your password is too short!");
+    } else if (value !== password) {
+      setConfirmedPasswordError("Passwords do not match!");
     } else {
       setConfirmedPasswordError("");
+    }
+  };
+
+  const hasErrors = () => {
+    if (shouldIncludeConfirmedPassword) {
+      return (
+        !validateEmail(email) ||
+        password.length < 6 ||
+        confirmedPassword.length < 6 ||
+        password !== confirmedPassword
+      );
+    } else {
+      return !validateEmail(email) || password.length < 6;
     }
   };
 
@@ -53,5 +68,6 @@ export default function useFormValidation() {
     handleEmailChange,
     handlePasswordChange,
     handleConfirmedPasswordChange,
+    hasErrors
   };
 }

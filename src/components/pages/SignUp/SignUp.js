@@ -10,7 +10,8 @@ function SignUp() {
     handleEmailChange,
     handlePasswordChange,
     handleConfirmedPasswordChange,
-  } = useFormValidation();
+    hasErrors
+  } = useFormValidation(true);
 
   return (
     <form className="login-contanier">
@@ -38,8 +39,9 @@ function SignUp() {
         {confirmedPasswordError ? <p>{confirmedPasswordError}</p> : ""}
       </div>
       <h3>
-        <button>Sign up</button>
+        <button disabled={hasErrors()}>Sign up</button>
       </h3>
+      {password === confirmedPassword ? "" : "Passwords don't match"}
     </form>
   );
 }
