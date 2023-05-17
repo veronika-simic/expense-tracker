@@ -1,30 +1,29 @@
-import "../../../styles/Form.css";
-import { useNavigate } from "react-router-dom";
 import useFormValidation from "../../../hooks/useFormValidation";
+import { useNavigate } from "react-router-dom";
+import "../../../styles/Form.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-function Login() {
+function SignUp() {
   const navigate = useNavigate();
   const {
     email,
     password,
+    confirmedPassword,
     emailError,
     passwordError,
+    confirmedPasswordError,
     handleEmailChange,
     handlePasswordChange,
+    handleConfirmedPasswordChange,
     hasErrors,
-  } = useFormValidation();
-
-  function navigateToSignUp() {
-    navigate("/signup");
-  }
+  } = useFormValidation(true);
 
   function navigateToHomePage() {
     navigate("/home");
   }
 
-  function displayLoginConfirmation() {
-    toast.success("Logged in successfully");
+  function displaySignUpInformation() {
+    toast.success("User signed up!");
   }
 
   return (
@@ -35,7 +34,7 @@ function Login() {
         {emailError ? <p>{emailError}</p> : ""}
       </div>
       <div>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Your Password</label>
         <input
           type="password"
           id="password"
@@ -44,18 +43,27 @@ function Login() {
         {passwordError ? <p>{passwordError}</p> : ""}
       </div>
       <div>
+        <label htmlFor="confirm-password">Confirm Password</label>
+        <input
+          type="password"
+          id="confirm-password"
+          onChange={handleConfirmedPasswordChange}
+        ></input>
+        {confirmedPasswordError ? <p>{confirmedPasswordError}</p> : ""}
+      </div>
+      <div>
         <button
           disabled={hasErrors()}
           onClick={() => {
-            displayLoginConfirmation();
+            displaySignUpInformation();
             navigateToHomePage();
           }}
         >
-          LOGIN
+          Sign up
         </button>
       </div>
     </form>
   );
 }
 
-export default Login;
+export default SignUp;

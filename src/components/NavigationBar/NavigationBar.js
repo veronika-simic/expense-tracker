@@ -1,4 +1,4 @@
-import "./NavigationBar.css"
+import "./NavigationBar.css";
 
 function NavigationBar() {
   return (
@@ -7,6 +7,7 @@ function NavigationBar() {
         EXPENSE <br></br> TRACKER
       </h1>
       <h2>Sign up</h2>
+      {/* <span class="material-symbols-outlined">logout</span> */}
     </div>
   );
 }
