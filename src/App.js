@@ -1,14 +1,14 @@
-import NewExpense from "./components/NewExpense/NewExpense";
 import "./App.css";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+
+import NewExpense from "./components/NewExpense/NewExpense";
 import HomePage from "./components/pages/Home/HomePage";
-import NavigationBar from "./components/NavigationBar/NavigationBar";
 import Login from "./components/pages/Login/Login";
 import SignUp from "./components/pages/SignUp/SignUp";
 import NotFound from "./components/pages/NotFound/NotFound";
-import withNav from "./routes/WithNav";
 import WithNav from "./routes/WithNav";
+
 function App() {
   const expenses = [
     { id: 1, title: "Dog food", amount: 24.56, date: new Date(2023, 2, 3) },
