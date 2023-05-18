@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-import "./HomePage.css";
 import ExpenseSearch from "../../Expenses/ExpenseSearch";
 import ExpensesAmount from "../../Expenses/ExpensesAmount";
 import Expenses from "../../Expenses/Expenses";
@@ -40,10 +38,7 @@ function HomePage() {
       date: new Date(2023, 2, 3),
     },
   ];
-  const navigate = useNavigate();
-  const navigateToNewExpense = () => {
-    navigate("/newexpense");
-  };
+
   const [newExpenses, setNewExpenses] = useState(expenses);
 
   return (
@@ -52,8 +47,8 @@ function HomePage() {
         <ExpenseSearch></ExpenseSearch>
         <ExpensesAmount items={newExpenses} />
       </div>
+
       <Expenses items={newExpenses}></Expenses>
-      <button className="new-expense" onClick={navigateToNewExpense}>+</button>
     </>
   );
 }
