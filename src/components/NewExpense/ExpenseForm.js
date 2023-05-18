@@ -30,17 +30,20 @@ function ExpenseForm(props) {
   }
   return (
     <form className="form-container" onSubmit={submitHandler}>
-      <label for="title">Title</label>
-      <input
-        type="text"
-        name="title"
-        value={title}
-        onChange={titleChangeHandler}
-        id="title"
-        placeholder="Money spent on...."
-      ></input>
       <div>
-        <label for="amount">Amount</label>
+        <label htmlFor="title">Title</label>
+        <input
+          type="text"
+          name="title"
+          value={title}
+          onChange={titleChangeHandler}
+          id="title"
+          placeholder="Money spent on...."
+        ></input>
+      </div>
+
+      <div className="amount-date-container">
+        <label htmlFor="amount">Amount</label>
         <input
           type="number"
           name="amount"
@@ -52,7 +55,7 @@ function ExpenseForm(props) {
           placeholder="Amount spent..."
         ></input>
 
-        <label for="date">Date</label>
+        <label htmlFor="date">Date</label>
         <input
           type="date"
           name="date"
@@ -65,17 +68,16 @@ function ExpenseForm(props) {
         ></input>
       </div>
 
-      <label for="description">Description</label>
-      <input
-        type="text"
-        name="description"
-        id="description"
-        minlength="10"
-        size="20"
-        placeholder="Where did you buy it?"
-      ></input>
+      <div>
+        <label htmlFor="description">Description</label>
+        <textarea
+          name="description"
+          placeholder="Description (optional)"
+          id="description"
+        ></textarea>
+      </div>
 
-      <button type="submit">Add expense</button>
+      <button type="submit">Add</button>
     </form>
   );
 }

@@ -2,6 +2,29 @@
   color: white;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  row-gap: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.new-expense {
+  border: none;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 3rem;
+  height: 4rem;
+  text-align: center;
+  width: 4rem;
+  position: absolute;
+  bottom: 15%;
+  right: 5%;
+  transition: 0.7s;
+}
+
+.new-expense:hover {
+  cursor: pointer;
+  transform: scale(1.2);
 }
 
 @media only screen and (max-width: 600px) {
