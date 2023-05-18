@@ -68,7 +68,7 @@ function ExpenseForm(props) {
         name="description"
         placeholder="Description (optional)"
       ></textarea>
-      <button type="submit">Add expense</button>
+      <button type="submit">Add</button>
     </form>
   );
 }
