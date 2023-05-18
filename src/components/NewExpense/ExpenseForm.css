@@ -1,9 +1,16 @@
 .form-container {
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
+  margin-top: 2.5rem;
+  row-gap: 2rem;
   width: 60%;
   flex: 1;
+}
+
+.form-container > div > label {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 input {
@@ -16,19 +23,15 @@ input {
 }
 
 #title {
-  color: blue;
-}
-
-.amount-date-container {
-  display: flex;
-}
-.amount-date-container label {
+  width: 100%;
 }
 
 textarea {
   border: 2px solid red;
   height: 150px;
+  font-size: 1rem;
   resize: none;
+  width: 100%;
 }
 
 .form-container > button {
