@@ -1,6 +1,8 @@
 .form-container {
   display: flex;
   flex-direction: column;
+  row-gap: 1rem;
+  background-color: red;
 }
 
 input {
@@ -10,5 +12,26 @@ input {
   font-size: 1rem;
   outline: none;
   padding: 1rem;
-  width: 25%;
+  width: 30%;
 }
+
+#title {
+  color: blue;
+  width: 30%;
+}
+
+.amount-date-container {
+  display: flex;
+}
+.amount-date-container label {
+  color: red;
+}
+
+textarea {
+  border: none;
+  height: 150px;
+  resize: none;
+  width: 32%;
+}
+
+

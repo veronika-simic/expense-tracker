@@ -39,7 +39,7 @@ function ExpenseForm(props) {
         id="title"
         placeholder="Money spent on...."
       ></input>
-      <div>
+      <div className="amount-date-container">
         <label for="amount">Amount</label>
         <input
           type="number"
@@ -64,17 +64,10 @@ function ExpenseForm(props) {
           placeholder="Date of purchase"
         ></input>
       </div>
-
-      <label for="description">Description</label>
-      <input
-        type="text"
+      <textarea
         name="description"
-        id="description"
-        minlength="10"
-        size="20"
-        placeholder="Where did you buy it?"
-      ></input>
-
+        placeholder="Description (optional)"
+      ></textarea>
       <button type="submit">Add expense</button>
     </form>
   );
