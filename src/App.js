@@ -7,6 +7,8 @@ import NavigationBar from "./components/NavigationBar/NavigationBar";
 import Login from "./components/pages/Login/Login";
 import SignUp from "./components/pages/SignUp/SignUp";
 import NotFound from "./components/pages/NotFound/NotFound";
+import withNav from "./routes/WithNav";
+import WithNav from "./routes/WithNav";
 function App() {
   const expenses = [
     { id: 1, title: "Dog food", amount: 24.56, date: new Date(2023, 2, 3) },
@@ -47,9 +49,8 @@ function App() {
     setNewExpenses((prevExpenses) => [expense, ...newExpenses]);
   }
   return (
-    <>
-      <NavigationBar />
-      <Routes>
+    <Routes>
+      <Route element={<WithNav />}>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<HomePage />} />
         <Route
@@ -57,9 +58,9 @@ function App() {
           element={<NewExpense onAddExpense={addExpenseHandler} />}
         />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </>
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
