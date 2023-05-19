@@ -9,6 +9,7 @@ function ExpenseItem(props) {
       <div className="amount">
         <h2>$ {props.item.amount}</h2>
       </div>
+      <div className="description">{props.item.description}</div>
     </Card>
   );
 }
