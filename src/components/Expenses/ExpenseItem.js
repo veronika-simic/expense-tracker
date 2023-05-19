@@ -1,4 +1,5 @@
 import "./ExpenseItem.css";
+import { ToastContainer, toast } from "react-toastify";
 import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
 function ExpenseItem(props) {
@@ -16,6 +17,10 @@ function ExpenseItem(props) {
         console.error("Error while deleting expense:", error);
       });
   };
+
+  function displayDeletedInformation() {
+    toast.success("Expense deleted!");
+  }
   return (
     <Card>
       <h2 className="title">{props.item.title}</h2>
@@ -23,7 +28,13 @@ function ExpenseItem(props) {
       <div className="amount">
         <h2>$ {props.item.amount}</h2>
       </div>
-      <span className="material-symbols-outlined" onClick={handleDeleteExpense}>
+      <span
+        className="material-symbols-outlined"
+        onClick={() => {
+          displayDeletedInformation();
+          handleDeleteExpense();
+        }}
+      >
         delete
       </span>
       <div className="description">{props.item.description}</div>
