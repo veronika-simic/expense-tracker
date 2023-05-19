@@ -77,7 +77,7 @@ function ExpenseForm(props) {
         ></textarea>
       </div>
 
-      <button type="submit">Add</button>
+      <button type="submit" >Add</button>
     </form>
   );
 }

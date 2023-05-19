@@ -1,5 +1,8 @@
 import "./ExpenseItem.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
 import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
 function ExpenseItem(props) {
@@ -19,7 +22,7 @@ function ExpenseItem(props) {
   };
 
   function displayDeletedInformation() {
-    toast.success("Expense deleted!");
+    toast.success("Expense deleted!", { hideProgressBar: true });
   }
   return (
     <Card>
@@ -28,15 +31,20 @@ function ExpenseItem(props) {
       <div className="amount">
         <h2>$ {props.item.amount}</h2>
       </div>
-      <span
-        className="material-symbols-outlined"
-        onClick={() => {
-          displayDeletedInformation();
-          handleDeleteExpense();
-        }}
-      >
-        delete
-      </span>
+      <a id="delete-expense">
+        <span
+          title="delete expense"
+          className="material-symbols-outlined"
+          onClick={() => {
+            displayDeletedInformation();
+            handleDeleteExpense();
+          }}
+        >
+          delete
+        </span>
+      </a>
+      <Tooltip anchorSelect="#delete-expense" content="Delete expense" />
+
       <div className="description">{props.item.description}</div>
     </Card>
   );
