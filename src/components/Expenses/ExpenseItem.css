@@ -1,3 +1,12 @@
 .amount {
   justify-self: flex-start;
 }
+
+span {
+  transition: 0.7s;
+}
+
+span:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}

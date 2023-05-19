@@ -1,6 +1,7 @@
 import ExpenseSearch from "../../Expenses/ExpenseSearch";
 import ExpensesAmount from "../../Expenses/ExpensesAmount";
 import Expenses from "../../Expenses/Expenses";
+import NewExpense from "../../NewExpense/NewExpense";
 import { useState, useEffect } from "react";
 
 function HomePage() {
@@ -14,16 +15,26 @@ function HomePage() {
       }
     };
     fetchExpenses();
-    console.log(expenses);
-  }, []);
+  }, [expenses]);
+
+  const handleExpenseDeleted = (expenseId) => {
+    setExpenses((prevExpenses) =>
+      prevExpenses.filter((expense) => expense._id !== expenseId)
+    );
+  };
+
   return (
     <>
       <div className="customization">
         <ExpenseSearch></ExpenseSearch>
         {expenses && <ExpensesAmount items={expenses} />}
       </div>
-
-      {expenses && <Expenses items={expenses}></Expenses>}
+      {expenses && (
+        <Expenses
+          items={expenses}
+          onExpenseDeleted={handleExpenseDeleted}
+        ></Expenses>
+      )}
     </>
   );
 }
