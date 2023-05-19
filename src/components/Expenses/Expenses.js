@@ -9,7 +9,11 @@ function Expenses(props) {
   return (
     <div className="container">
       {props.items.map((item) => (
-        <ExpenseItem item={item} key={item._id} />
+        <ExpenseItem
+          item={item}
+          key={item._id}
+          onExpenseDeleted={props.onExpenseDeleted}
+        />
       ))}
       <button className="new-expense" onClick={navigateToNewExpense}>
         +

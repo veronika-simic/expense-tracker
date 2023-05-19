@@ -14,8 +14,13 @@ function HomePage() {
       }
     };
     fetchExpenses();
-    console.log(expenses);
-  }, []);
+  }, [expenses]);
+
+  const handleExpenseDeleted = (expenseId) => {
+    setExpenses((prevExpenses) =>
+      prevExpenses.filter((expense) => expense._id !== expenseId)
+    );
+  };
   return (
     <>
       <div className="customization">
@@ -23,7 +28,12 @@ function HomePage() {
         {expenses && <ExpensesAmount items={expenses} />}
       </div>
 
-      {expenses && <Expenses items={expenses}></Expenses>}
+      {expenses && (
+        <Expenses
+          items={expenses}
+          onExpenseDeleted={handleExpenseDeleted}
+        ></Expenses>
+      )}
     </>
   );
 }
