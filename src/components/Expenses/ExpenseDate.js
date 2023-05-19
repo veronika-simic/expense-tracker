@@ -1,8 +1,10 @@
 import "./ExpenseDate.css";
+import moment from "moment";
 function ExpenseDate(props) {
+  const dateToBeFormate = props.date;
   return (
     <>
-      <h2 className="date">{props.date}</h2>
+      <h2 className="date">{moment(dateToBeFormate).format("DD/MM/YYYY")}</h2>
     </>
   );
 }
