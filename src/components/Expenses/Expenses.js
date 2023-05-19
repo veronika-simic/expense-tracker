@@ -9,7 +9,7 @@ function Expenses(props) {
   return (
     <div className="container">
       {props.items.map((item) => (
-        <ExpenseItem item={item} key={item.id} />
+        <ExpenseItem item={item} key={item._id} />
       ))}
       <button className="new-expense" onClick={navigateToNewExpense}>
         +

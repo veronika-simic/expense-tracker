@@ -1,13 +1,10 @@
 import "./ExpenseDate.css";
+import moment from "moment";
 function ExpenseDate(props) {
-  const month = props.date.toLocaleString("en-US", { month: "long" });
-  const year = props.date.getFullYear();
-  const day = props.date.toLocaleString("en-US", { day: "2-digit" });
+  const dateToBeFormate = props.date;
   return (
     <>
-      <h2 className="date">
-        {day} {month} {year}
-      </h2>
+      <h2 className="date">{moment(dateToBeFormate).format("DD/MM/YYYY")}</h2>
     </>
   );
 }

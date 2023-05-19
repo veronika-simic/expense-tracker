@@ -1,54 +1,29 @@
 import ExpenseSearch from "../../Expenses/ExpenseSearch";
 import ExpensesAmount from "../../Expenses/ExpensesAmount";
 import Expenses from "../../Expenses/Expenses";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function HomePage() {
-  const expenses = [
-    { id: 1, title: "Dog food", amount: 24.56, date: new Date(2023, 2, 3) },
-    { id: 2, title: "Cat food", amount: 32.56, date: new Date(2023, 2, 3) },
-    {
-      id: 3,
-      title: "Human food",
-      amount: 124.56,
-      date: new Date(2023, 2, 3),
-    },
-    {
-      id: 4,
-      title: "Human food",
-      amount: 124.56,
-      date: new Date(2023, 2, 3),
-    },
-    {
-      id: 5,
-      title: "Human food",
-      amount: 124.56,
-      date: new Date(2023, 2, 3),
-    },
-    {
-      id: 6,
-      title: "Human food",
-      amount: 124.56,
-      date: new Date(2023, 2, 3),
-    },
-    {
-      id: 7,
-      title: "Human food",
-      amount: 124.56,
-      date: new Date(2023, 2, 3),
-    },
-  ];
-
-  const [newExpenses, setNewExpenses] = useState(expenses);
-
+  const [expenses, setExpenses] = useState(null);
+  useEffect(() => {
+    const fetchExpenses = async () => {
+      const response = await fetch("/api/expenses");
+      const json = await response.json();
+      if (response.ok) {
+        setExpenses(json);
+      }
+    };
+    fetchExpenses();
+    console.log(expenses);
+  }, []);
   return (
     <>
       <div className="customization">
         <ExpenseSearch></ExpenseSearch>
-        <ExpensesAmount items={newExpenses} />
+        {expenses && <ExpensesAmount items={expenses} />}
       </div>
 
-      <Expenses items={newExpenses}></Expenses>
+      {expenses && <Expenses items={expenses}></Expenses>}
     </>
   );
 }
