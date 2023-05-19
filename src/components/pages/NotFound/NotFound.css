@@ -1,12 +1,11 @@
 .not-found-container {
   align-items: center;
-  /*  background-color: #9b90bd; */
   display: flex;
   justify-content: space-around;
 }
 
 .not-found-container h2 {
-  color: #885191;
+  color:  #2876f9;
   font-size: 6rem;
   margin: 0;
 }
@@ -20,11 +19,11 @@ image {
 }
 
 .not-found-container button {
-  border: 3px solid #885191;
+  border: 3px solid  #2876f9;
   background-color: transparent;
   border-radius: 10%;
   box-sizing: border-box;
-  color: #885191;
+  color: #2876f9;
   outline: none;
   font-size: 2rem;
   font-weight: bold;
