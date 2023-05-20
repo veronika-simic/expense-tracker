@@ -4,6 +4,7 @@ function ExpenseForm(props) {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
+  const [description, setDescription] = useState("");
   function titleChangeHandler(event) {
     setTitle(event.target.value);
   }
@@ -16,17 +17,23 @@ function ExpenseForm(props) {
     setDate(event.target.value);
   }
 
+  function descriptionChangeHandler(event) {
+    setDescription(event.target.value);
+  }
+
   function submitHandler(event) {
     event.preventDefault();
     const expenseData = {
       title,
       amount,
-      date: new Date(date),
+      date,
+      description,
     };
     props.onSaveExpenseData(expenseData);
     setTitle("");
     setDate("");
     setAmount("");
+    setDescription("");
   }
   return (
     <form className="form-container" onSubmit={submitHandler}>
@@ -74,10 +81,11 @@ function ExpenseForm(props) {
           name="description"
           placeholder="Description (optional)"
           id="description"
+          onChange={descriptionChangeHandler}
         ></textarea>
       </div>
 
-      <button type="submit" >Add</button>
+      <button type="submit">Add</button>
     </form>
   );
 }
