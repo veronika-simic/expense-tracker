@@ -8,8 +8,14 @@
   border-radius: 10%;
   background-color: #03c988;
   color: white;
-  font-size: 2rem;
+  font-size: 1.75rem;
   text-align: center;
-  padding: 0.5rem 0;
-  width: 20%;
+  transition: 0.7s;
+  padding: 1rem 1.5rem;
+  width: 15%;
+}
+
+.no-expenses > button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }

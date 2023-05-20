@@ -1,11 +1,10 @@
 import "./NoExpenses.css";
 import { useNavigate } from "react-router-dom";
-import NewExpense from "../NewExpense/NewExpense"
 function NoExpenses() {
-    const navigate = useNavigate()
-    function buttonClickHandler() {
-        navigate('/newexpense')
-    }
+  const navigate = useNavigate();
+  function buttonClickHandler() {
+    navigate("/newexpense");
+  }
   return (
     <div className="no-expenses">
       <h2>No expenses</h2>
