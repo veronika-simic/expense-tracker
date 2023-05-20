@@ -22,10 +22,13 @@ function ExpenseForm(props) {
   }
 
   function descriptionChangeHandler(event) {
-    setDescription(event.target.value.trim());
-    if (description === "") {
+    const inputValue = event.target.value.trim();
+
+    setDescription(inputValue);
+
+    if (inputValue === "") {
       setDescription("Sorry, no description for this one!");
-    } 
+    }
   }
 
   function displayConfirmation() {
