@@ -30,6 +30,7 @@
   transition: 0.8s;
   transform: translateY(-100px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  
 }
 
 .container .card:hover .slide.slide2 {

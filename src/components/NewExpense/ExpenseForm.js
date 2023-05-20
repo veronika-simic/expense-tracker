@@ -1,9 +1,14 @@
 import "./ExpenseForm.css";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function ExpenseForm(props) {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
+  const [description, setDescription] = useState("");
+  const [error, setError] = useState(null);
+
   function titleChangeHandler(event) {
     setTitle(event.target.value);
   }
@@ -16,20 +21,58 @@ function ExpenseForm(props) {
     setDate(event.target.value);
   }
 
-  function submitHandler(event) {
+  function descriptionChangeHandler(event) {
+    const inputValue = event.target.value.trim();
+
+    setDescription(inputValue);
+
+    if (inputValue === "") {
+      setDescription("Sorry, no description for this one!");
+    }
+  }
+
+  function displayConfirmation() {
+    toast.success("Expense added");
+  }
+
+  async function submitHandler(event) {
     event.preventDefault();
     const expenseData = {
       title,
       amount,
-      date: new Date(date),
+      date,
+      description,
     };
-    props.onSaveExpenseData(expenseData);
-    setTitle("");
-    setDate("");
-    setAmount("");
+
+    const response = await fetch("/api/expenses", {
+      method: "POST",
+      body: JSON.stringify(expenseData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      setError(json.error);
+    }
+    if (response.ok) {
+      setError(null);
+      setTitle("");
+      setDate("");
+      setAmount("");
+      setDescription("");
+    }
   }
   return (
-    <form className="form-container" onSubmit={submitHandler}>
+    <form
+      className="form-container"
+      onSubmit={(event) => {
+        submitHandler(event);
+        displayConfirmation();
+      }}
+    >
       <div>
         <label htmlFor="title">Title</label>
         <input
@@ -39,6 +82,7 @@ function ExpenseForm(props) {
           onChange={titleChangeHandler}
           id="title"
           placeholder="Money spent on...."
+          required
         ></input>
       </div>
 
@@ -53,6 +97,7 @@ function ExpenseForm(props) {
           onChange={amountChangeHandler}
           id="amount"
           placeholder="Amount spent..."
+          required
         ></input>
 
         <label htmlFor="date">Date</label>
@@ -65,6 +110,7 @@ function ExpenseForm(props) {
           onChange={dateChangeHandler}
           id="date"
           placeholder="Date of purchase"
+          required
         ></input>
       </div>
 
@@ -74,10 +120,11 @@ function ExpenseForm(props) {
           name="description"
           placeholder="Description (optional)"
           id="description"
+          onChange={descriptionChangeHandler}
         ></textarea>
       </div>
 
-      <button type="submit" >Add</button>
+      <button type="submit">Add</button>
     </form>
   );
 }
