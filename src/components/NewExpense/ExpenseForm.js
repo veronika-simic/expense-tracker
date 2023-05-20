@@ -5,6 +5,7 @@ function ExpenseForm(props) {
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
+  const [error, setError] = useState(null);
   function titleChangeHandler(event) {
     setTitle(event.target.value);
   }
@@ -21,7 +22,7 @@ function ExpenseForm(props) {
     setDescription(event.target.value);
   }
 
-  function submitHandler(event) {
+  async function submitHandler(event) {
     event.preventDefault();
     const expenseData = {
       title,
@@ -29,11 +30,27 @@ function ExpenseForm(props) {
       date,
       description,
     };
-    props.onSaveExpenseData(expenseData);
-    setTitle("");
-    setDate("");
-    setAmount("");
-    setDescription("");
+
+    const response = await fetch("/api/expenses", {
+      method: "POST",
+      body: JSON.stringify(expenseData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      setError(json.error);
+    }
+    if (response.ok) {
+      setError(null);
+      setTitle("");
+      setDate("");
+      setAmount("");
+      setDescription("");
+    }
   }
   return (
     <form className="form-container" onSubmit={submitHandler}>

@@ -1,7 +1,6 @@
 import ExpenseSearch from "../../Expenses/ExpenseSearch";
 import ExpensesAmount from "../../Expenses/ExpensesAmount";
 import Expenses from "../../Expenses/Expenses";
-import NewExpense from "../../NewExpense/NewExpense";
 import { useState, useEffect } from "react";
 
 function HomePage() {
