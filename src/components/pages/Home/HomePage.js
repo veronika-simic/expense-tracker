@@ -2,6 +2,7 @@ import ExpenseSearch from "../../Expenses/ExpenseSearch";
 import ExpensesAmount from "../../Expenses/ExpensesAmount";
 import Expenses from "../../Expenses/Expenses";
 import { useState, useEffect } from "react";
+import NoExpenses from "../../Expenses/NoExpenses";
 
 function HomePage() {
   const [expenses, setExpenses] = useState(null);
@@ -26,7 +27,7 @@ function HomePage() {
     <>
       <div className="customization">
         <ExpenseSearch></ExpenseSearch>
-        {expenses && <ExpensesAmount items={expenses} />}
+        {expenses ? <ExpensesAmount items={expenses} /> : <NoExpenses />}
       </div>
       {expenses && (
         <Expenses
