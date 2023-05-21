@@ -9,6 +9,7 @@ function ExpenseForm(props) {
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
 
+
   function titleChangeHandler(event) {
     setTitle(event.target.value);
   }
