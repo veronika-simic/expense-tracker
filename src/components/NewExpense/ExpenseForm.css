@@ -53,7 +53,7 @@ textarea {
   box-sizing: border-box;
 }
 
-.form-container > button {
+.form-container > div > button {
   border: none;
   border-radius: 10%;
   background: #03c988;
@@ -62,11 +62,21 @@ textarea {
   text-align: center;
   transition: 0.7s;
   padding: 0.5rem 0;
-  align-self: flex-end;
   width: 20%;
 }
 
-.form-container > button:hover {
+.form-container > div > #add {
+  float: right;
+}
+
+.form-container > div > #back {
+  border: 2px solid #03c988;
+  background: white;
+  color: #03c988;
+  align-self: flex-start;
+}
+
+.form-container > div > button:hover {
   cursor: pointer;
   transform: scale(1.1);
 }

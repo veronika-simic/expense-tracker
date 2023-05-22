@@ -1,14 +1,16 @@
+import { func } from "prop-types";
 import "./ExpenseForm.css";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router";
 function ExpenseForm(props) {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
-
+  const navigate = useNavigate();
   function titleChangeHandler(event) {
     setTitle(event.target.value.trim());
   }
@@ -22,7 +24,7 @@ function ExpenseForm(props) {
   }
 
   function descriptionChangeHandler(event) {
-    setDescription(event.target.value.trim())
+    setDescription(event.target.value.trim());
   }
 
   function displayConfirmation() {
@@ -35,7 +37,7 @@ function ExpenseForm(props) {
       title,
       amount,
       date,
-      description
+      description,
     };
     const response = await fetch("/api/expenses", {
       method: "POST",
@@ -59,6 +61,9 @@ function ExpenseForm(props) {
     }
   }
 
+  function backButtonHandler() {
+    navigate("/");
+  }
   return (
     <form
       className="form-container"
@@ -76,6 +81,7 @@ function ExpenseForm(props) {
           onChange={titleChangeHandler}
           id="title"
           placeholder="Money spent on...."
+          maxLength={15}
           required
         ></input>
       </div>
@@ -95,7 +101,6 @@ function ExpenseForm(props) {
             required
           ></input>
         </div>
-
         <div id="date">
           <label htmlFor="date">Date</label>
           <input
@@ -119,9 +124,15 @@ function ExpenseForm(props) {
           placeholder="Description (optional)"
           id="description"
           onChange={descriptionChangeHandler}
+          value={description}
         ></textarea>
       </div>
-      <button type="submit">Add</button>
+      <div>
+        <button type="button" id="back" onClick={backButtonHandler}>
+          Back
+        </button>
+        <button type="submit" id="add">Add</button>
+      </div>
     </form>
   );
 }
