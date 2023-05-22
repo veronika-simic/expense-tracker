@@ -10,7 +10,7 @@ function ExpenseForm(props) {
   const [error, setError] = useState(null);
 
   function titleChangeHandler(event) {
-    setTitle(event.target.value);
+    setTitle(event.target.value.trim());
   }
 
   function amountChangeHandler(event) {
@@ -22,13 +22,7 @@ function ExpenseForm(props) {
   }
 
   function descriptionChangeHandler(event) {
-    const inputValue = event.target.value.trim();
-
-    setDescription(inputValue);
-
-    if (inputValue === "") {
-      setDescription("Sorry, no description for this one!");
-    }
+    setDescription(event.target.value.trim())
   }
 
   function displayConfirmation() {
@@ -41,9 +35,8 @@ function ExpenseForm(props) {
       title,
       amount,
       date,
-      description,
+      description
     };
-
     const response = await fetch("/api/expenses", {
       method: "POST",
       body: JSON.stringify(expenseData),
@@ -128,9 +121,7 @@ function ExpenseForm(props) {
           onChange={descriptionChangeHandler}
         ></textarea>
       </div>
-
       <button type="submit">Add</button>
-      <div class="shine"></div>
     </form>
   );
 }
