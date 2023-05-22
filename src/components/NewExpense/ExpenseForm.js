@@ -83,6 +83,8 @@ function ExpenseForm(props) {
           placeholder="Money spent on...."
           maxLength={15}
           required
+          onInvalid={e => e.target.setCustomValidity("Title is required")}
+          onInput={e => e.target.setCustomValidity("")} 
         ></input>
       </div>
 
@@ -99,6 +101,8 @@ function ExpenseForm(props) {
             id="amount"
             placeholder="Amount spent..."
             required
+            onInvalid={e => e.target.setCustomValidity("Amount is required")}
+            onInput={e => e.target.setCustomValidity("")} 
           ></input>
         </div>
         <div id="date">
@@ -113,6 +117,8 @@ function ExpenseForm(props) {
             id="date"
             placeholder="Date of purchase"
             required
+            onInvalid={e => e.target.setCustomValidity("Date is required")}
+            onInput={e => e.target.setCustomValidity("")} 
           ></input>
         </div>
       </div>
