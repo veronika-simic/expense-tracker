@@ -3,23 +3,31 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
+
 function ExpenseForm() {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
+  const [quantity, setQuantity] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   function titleChangeHandler(event) {
     setTitle(event.target.value.trim());
   }
 
+  function categoryChangeHandler(event) {
+    setCategory(event.target.value.trim());
+  }
+
   function amountChangeHandler(event) {
     setAmount(event.target.value);
   }
 
+  function quantityChangeHandler(event) {
+    setQuantity(event.target.value.trim());
+  }
   function dateChangeHandler(event) {
     setDate(event.target.value);
   }
@@ -73,7 +81,7 @@ function ExpenseForm() {
         displayConfirmation();
       }}
     >
-      <div>
+      <div className="title-category-container">
         <label htmlFor="title">Title</label>
         <input
           type="text"
@@ -84,12 +92,20 @@ function ExpenseForm() {
           placeholder="Money spent on...."
           maxLength={15}
           required
-          onInvalid={e => e.target.setCustomValidity("Title is required")}
-          onInput={e => e.target.setCustomValidity("")} 
+          onInvalid={(e) => e.target.setCustomValidity("Title is required")}
+          onInput={(e) => e.target.setCustomValidity("")}
+        ></input>
+        <label htmlFor="category">Category</label>
+        <input
+          type="text"
+          name="category"
+          value={category}
+          onChange={categoryChangeHandler}
+          id="category"
+          placeholder="Category...."
         ></input>
       </div>
-
-      <div className="amount-date-container">
+      <div className="amount-quantity-date-container">
         <div id="amount">
           <label htmlFor="amount">Amount</label>
           <input
@@ -102,8 +118,26 @@ function ExpenseForm() {
             id="amount"
             placeholder="Amount spent..."
             required
-            onInvalid={e => e.target.setCustomValidity("Amount is required")}
-            onInput={e => e.target.setCustomValidity("")} 
+            onInvalid={(e) => e.target.setCustomValidity("Amount is required")}
+            onInput={(e) => e.target.setCustomValidity("")}
+          ></input>
+        </div>
+        <div id="quantity">
+          <label htmlFor="quantity">Quantity</label>
+          <input
+            type="number"
+            name="quantity"
+            min="1"
+            step="1"
+            value={quantity}
+            onChange={quantityChangeHandler}
+            id="quantity"
+            placeholder="Quantity"
+            required
+            onInvalid={(e) =>
+              e.target.setCustomValidity("Quantity is required")
+            }
+            onInput={(e) => e.target.setCustomValidity("")}
           ></input>
         </div>
         <div id="date">
@@ -118,13 +152,13 @@ function ExpenseForm() {
             id="date"
             placeholder="Date of purchase"
             required
-            onInvalid={e => e.target.setCustomValidity("Date is required")}
-            onInput={e => e.target.setCustomValidity("")} 
+            onInvalid={(e) => e.target.setCustomValidity("Date is required")}
+            onInput={(e) => e.target.setCustomValidity("")}
           ></input>
         </div>
       </div>
 
-      <div>
+      <div className="description-container">
         <label htmlFor="description">Description</label>
         <textarea
           name="description"
@@ -138,7 +172,9 @@ function ExpenseForm() {
         <button type="button" id="back" onClick={backButtonHandler}>
           Back
         </button>
-        <button type="submit" id="add">Add</button>
+        <button type="submit" id="add">
+          Add
+        </button>
       </div>
     </form>
   );
