@@ -3,9 +3,11 @@ import { useState } from "react";
 import "../../../styles/Form.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useSignup } from "../../../hooks/useSignup";
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { signup, error, isLoading } = useSignup();
   const navigate = useNavigate();
 
   function handleEmailChange(e) {
@@ -17,7 +19,7 @@ function SignUp() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(email, password);
+    await signup(email, password);
   }
   function navigateToHomePage() {
     navigate("/home");
@@ -42,7 +44,8 @@ function SignUp() {
         ></input>
       </div>
       <div>
-        <button>SIGN UP</button>
+        <button disabled={isLoading}>SIGN UP</button>
+        {error && <div>{error}</div>}
       </div>
     </form>
   );
