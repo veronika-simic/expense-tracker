@@ -1,11 +1,13 @@
 .not-found-container {
   align-items: center;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
 }
 
 .not-found-container h2 {
-  color:  #2876f9;
+  color:#6d17cb;
   font-size: 6rem;
   margin: 0;
 }
@@ -13,24 +15,20 @@
 .not-found-container p {
   font-size: 1.5rem;
 }
-image {
-  width: 200px;
-  height: 200px;
-}
 
 .not-found-container button {
-  border: 3px solid  #2876f9;
+  border: 3px solid #6d17cb;
   background-color: transparent;
   border-radius: 10%;
   box-sizing: border-box;
-  color: #2876f9;
+  color: #6d17cb;
   outline: none;
   font-size: 2rem;
   font-weight: bold;
   margin: 1rem 0;
   padding: 1rem 2.5rem;
   text-align: center;
-  width: 25%;
+  width: 15%;
 }
 
 .not-found-container button:hover {
