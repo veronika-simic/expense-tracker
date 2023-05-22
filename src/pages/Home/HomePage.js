@@ -1,8 +1,8 @@
-import ExpenseSearch from "../../Expenses/ExpenseSearch";
-import ExpensesAmount from "../../Expenses/ExpensesAmount";
-import Expenses from "../../Expenses/Expenses";
+import ExpenseSearch from "../../components/Expenses/ExpenseSearch";
+import ExpensesAmount from "../../components/Expenses/ExpensesAmount";
+import Expenses from "../../components/Expenses/Expenses";
 import { useState, useEffect } from "react";
-import NoExpenses from "../../Expenses/NoExpenses";
+import NoExpenses from "../../components/Expenses/NoExpenses";
 
 function HomePage() {
   const [expenses, setExpenses] = useState(null);

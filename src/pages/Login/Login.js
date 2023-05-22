@@ -1,6 +1,6 @@
-import "../../../styles/Form.css";
+import "../../styles/Form.css";
 import { useNavigate } from "react-router-dom";
-import useFormValidation from "../../../hooks/useFormValidation";
+import useFormValidation from "../../hooks/useFormValidation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function Login() {

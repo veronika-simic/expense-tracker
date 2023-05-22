@@ -3,10 +3,10 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import NewExpense from "./components/NewExpense/NewExpense";
-import HomePage from "./components/pages/Home/HomePage";
-import Login from "./components/pages/Login/Login";
-import SignUp from "./components/pages/SignUp/SignUp";
-import NotFound from "./components/pages/NotFound/NotFound";
+import HomePage from "./pages/Home/HomePage";
+import Login from "./pages/Login/Login";
+import SignUp from "./pages/SignUp/SignUp";
+import NotFound from "./pages/NotFound/NotFound";
 import WithNav from "./routes/WithNav";
 
 function App() {
