@@ -13,8 +13,8 @@ function App() {
   return (
     <Routes>
       <Route element={<WithNav />}>
-        <Route path="/" element={<Login />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/newexpense" element={<NewExpense />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/:id" element={<ExpenseItem />} />

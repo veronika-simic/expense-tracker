@@ -2,16 +2,18 @@ import "./ExpenseForm.css";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-function ExpenseForm(props) {
+import { useNavigate } from "react-router";
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+function ExpenseForm() {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
-
-
+  const navigate = useNavigate();
   function titleChangeHandler(event) {
-    setTitle(event.target.value);
+    setTitle(event.target.value.trim());
   }
 
   function amountChangeHandler(event) {
@@ -23,13 +25,7 @@ function ExpenseForm(props) {
   }
 
   function descriptionChangeHandler(event) {
-    const inputValue = event.target.value.trim();
-
-    setDescription(inputValue);
-
-    if (inputValue === "") {
-      setDescription("Sorry, no description for this one!");
-    }
+    setDescription(event.target.value.trim());
   }
 
   function displayConfirmation() {
@@ -44,7 +40,6 @@ function ExpenseForm(props) {
       date,
       description,
     };
-
     const response = await fetch("/api/expenses", {
       method: "POST",
       body: JSON.stringify(expenseData),
@@ -66,6 +61,10 @@ function ExpenseForm(props) {
       setDescription("");
     }
   }
+
+  function backButtonHandler() {
+    navigate("/");
+  }
   return (
     <form
       className="form-container"
@@ -83,36 +82,46 @@ function ExpenseForm(props) {
           onChange={titleChangeHandler}
           id="title"
           placeholder="Money spent on...."
+          maxLength={15}
           required
+          onInvalid={e => e.target.setCustomValidity("Title is required")}
+          onInput={e => e.target.setCustomValidity("")} 
         ></input>
       </div>
 
       <div className="amount-date-container">
-        <label htmlFor="amount">Amount</label>
-        <input
-          type="number"
-          name="amount"
-          min="0.1"
-          step="0.01"
-          value={amount}
-          onChange={amountChangeHandler}
-          id="amount"
-          placeholder="Amount spent..."
-          required
-        ></input>
-
-        <label htmlFor="date">Date</label>
-        <input
-          type="date"
-          name="date"
-          min="2019-01-01"
-          max="2024-01-01"
-          value={date}
-          onChange={dateChangeHandler}
-          id="date"
-          placeholder="Date of purchase"
-          required
-        ></input>
+        <div id="amount">
+          <label htmlFor="amount">Amount</label>
+          <input
+            type="number"
+            name="amount"
+            min="0.1"
+            step="0.01"
+            value={amount}
+            onChange={amountChangeHandler}
+            id="amount"
+            placeholder="Amount spent..."
+            required
+            onInvalid={e => e.target.setCustomValidity("Amount is required")}
+            onInput={e => e.target.setCustomValidity("")} 
+          ></input>
+        </div>
+        <div id="date">
+          <label htmlFor="date">Date</label>
+          <input
+            type="date"
+            name="date"
+            min="2019-01-01"
+            max="2024-01-01"
+            value={date}
+            onChange={dateChangeHandler}
+            id="date"
+            placeholder="Date of purchase"
+            required
+            onInvalid={e => e.target.setCustomValidity("Date is required")}
+            onInput={e => e.target.setCustomValidity("")} 
+          ></input>
+        </div>
       </div>
 
       <div>
@@ -122,10 +131,15 @@ function ExpenseForm(props) {
           placeholder="Description (optional)"
           id="description"
           onChange={descriptionChangeHandler}
+          value={description}
         ></textarea>
       </div>
-
-      <button type="submit">Add</button>
+      <div>
+        <button type="button" id="back" onClick={backButtonHandler}>
+          Back
+        </button>
+        <button type="submit" id="add">Add</button>
+      </div>
     </form>
   );
 }
