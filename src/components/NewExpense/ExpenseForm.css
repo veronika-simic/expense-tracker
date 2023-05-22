@@ -1,10 +1,10 @@
 .form-container {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   margin-top: 2.5rem;
   row-gap: 2rem;
   width: 60%;
-  flex: 1;
 }
 
 .form-container > div > label {
@@ -24,6 +24,22 @@ input {
 
 #title {
   width: 100%;
+  box-sizing: border-box;
+}
+
+.amount-date-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#amount,
+#date > label {
+  display: block;
+}
+
+#amount,
+#date > input {
+  width: 28.125rem;
 }
 
 textarea {
@@ -34,16 +50,23 @@ textarea {
   padding: 1rem;
   resize: none;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .form-container > button {
   border: none;
   border-radius: 10%;
-  background-color: #03c988;
+  background: #03c988;
   color: white;
   font-size: 2rem;
   text-align: center;
+  transition: 0.7s;
   padding: 0.5rem 0;
   align-self: flex-end;
   width: 20%;
+}
+
+.form-container > button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }

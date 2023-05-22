@@ -9,7 +9,6 @@ function ExpenseForm(props) {
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
 
-
   function titleChangeHandler(event) {
     setTitle(event.target.value);
   }
@@ -66,6 +65,7 @@ function ExpenseForm(props) {
       setDescription("");
     }
   }
+
   return (
     <form
       className="form-container"
@@ -88,31 +88,35 @@ function ExpenseForm(props) {
       </div>
 
       <div className="amount-date-container">
-        <label htmlFor="amount">Amount</label>
-        <input
-          type="number"
-          name="amount"
-          min="0.1"
-          step="0.01"
-          value={amount}
-          onChange={amountChangeHandler}
-          id="amount"
-          placeholder="Amount spent..."
-          required
-        ></input>
+        <div id="amount">
+          <label htmlFor="amount">Amount</label>
+          <input
+            type="number"
+            name="amount"
+            min="0.1"
+            step="0.01"
+            value={amount}
+            onChange={amountChangeHandler}
+            id="amount"
+            placeholder="Amount spent..."
+            required
+          ></input>
+        </div>
 
-        <label htmlFor="date">Date</label>
-        <input
-          type="date"
-          name="date"
-          min="2019-01-01"
-          max="2024-01-01"
-          value={date}
-          onChange={dateChangeHandler}
-          id="date"
-          placeholder="Date of purchase"
-          required
-        ></input>
+        <div id="date">
+          <label htmlFor="date">Date</label>
+          <input
+            type="date"
+            name="date"
+            min="2019-01-01"
+            max="2024-01-01"
+            value={date}
+            onChange={dateChangeHandler}
+            id="date"
+            placeholder="Date of purchase"
+            required
+          ></input>
+        </div>
       </div>
 
       <div>
@@ -126,6 +130,7 @@ function ExpenseForm(props) {
       </div>
 
       <button type="submit">Add</button>
+      <div class="shine"></div>
     </form>
   );
 }
