@@ -4,6 +4,7 @@
   border-radius: 5%;
   width: 270px;
   transition: 0.5s;
+  text-align: center;
 }
 
 .container .card .slide.slide1 {

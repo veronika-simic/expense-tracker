@@ -16,7 +16,7 @@
   height: 4rem;
   text-align: center;
   width: 4rem;
-  position: absolute;
+  position: fixed;
   bottom: 15%;
   right: 5%;
   transition: 0.7s;

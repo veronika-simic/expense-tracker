@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 function NotFound() {
   const navigate = useNavigate();
   function navigateToHomePage() {
-    navigate("/home");
+    navigate("/");
   }
   return (
     <div className="not-found-container">
