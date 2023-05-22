@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
+import { useNavigate } from "react-router";
 import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
 function ExpenseItem(props) {
@@ -24,6 +25,10 @@ function ExpenseItem(props) {
   function displayDeletedInformation() {
     toast.success("Expense deleted!", { hideProgressBar: true });
   }
+  const navigate = useNavigate()
+  function buttonClickHandler() {
+    navigate(`/${props.item._id}`)
+  }
   return (
     <Card>
       <h2 className="title">{props.item.title}</h2>
@@ -44,7 +49,7 @@ function ExpenseItem(props) {
        
       
       <Tooltip anchorSelect="#delete-expense" content="Delete expense" />
-     
+          <button onClick={buttonClickHandler}></button>
       <div className="description">{props.item.description}</div>
     </Card>
   );
