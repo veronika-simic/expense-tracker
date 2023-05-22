@@ -2,7 +2,7 @@
 
 .container .card .slide {
   border-radius: 5%;
-  width: 300px;
+  width: 270px;
   transition: 0.5s;
 }
 
@@ -15,6 +15,7 @@
   align-items: center;
   z-index: 1;
   transition: 0.7s;
+  height: 25vh;
 }
 
 .container .card:hover .slide.slide1 {

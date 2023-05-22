@@ -31,20 +31,20 @@ function ExpenseItem(props) {
       <div className="amount">
         <h2>$ {props.item.amount}</h2>
       </div>
-      <a id="delete-expense">
+     
         <span
-          title="delete expense"
           className="material-symbols-outlined"
           onClick={() => {
             displayDeletedInformation();
             handleDeleteExpense();
           }}
         >
-          delete
+          <a id="delete-expense">delete</a> 
         </span>
-      </a>
+       
+      
       <Tooltip anchorSelect="#delete-expense" content="Delete expense" />
-
+     
       <div className="description">{props.item.description}</div>
     </Card>
   );
