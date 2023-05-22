@@ -4,7 +4,7 @@ function NavigationBar() {
   return (
     <div className="navigation">
       <h1>
-        <a href="/home">EXPENSE <br></br> TRACKER</a>
+        <a href="/">EXPENSE <br></br> TRACKER</a>
       </h1>
       <h2>Sign up</h2>
       {/* <span class="material-symbols-outlined">logout</span> */}
