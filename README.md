@@ -30,7 +30,7 @@
 ## Features
 
 - User can login by providing a valid email address and password
-- Password has to have at least 6 characters and 1 number
+- Password has to have at least 8 characters, which includes a number, uppercase letter and a special character
 - User can input expenses by specifiying title, amount, date of purchase and description
 - User can preview expenses
 ## Screenshots
