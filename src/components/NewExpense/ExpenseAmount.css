@@ -1,0 +1,10 @@
+.amount-container {
+  display: flex;
+  flex-direction: column;
+  grid-area: amount;
+  row-gap: 0.5rem;
+}
+
+.amount-container > input {
+    width: 100%;
+}

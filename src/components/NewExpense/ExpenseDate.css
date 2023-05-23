@@ -1,0 +1,10 @@
+.date-container {
+  display: flex;
+  flex-direction: column;
+  grid-area: date;
+  row-gap: 0.5rem;
+}
+
+.date-container > input {
+    width: 90%;
+}

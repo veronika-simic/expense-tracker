@@ -1,0 +1,10 @@
+.quantity-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  grid-area: quantity;
+}
+
+.quantity-container > input {
+    width: 100%;
+}
