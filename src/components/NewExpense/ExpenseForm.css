@@ -7,50 +7,23 @@
   width: 60%;
 }
 
-.form-container > div > label {
-  display: block;
+.title-category-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas: "title title title quantity";
+}
+
+.amount-quantity-date-container {
+  display: grid;
+  column-gap: 4.5rem;
+  grid-template-columns: repeat(3,calc((100% - 8rem) / 3));
+  grid-template-rows: auto;
+  grid-template-areas: "amount quantity date";
+}
+
+.form-container {
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-input {
-  background: #f5f5f5;
-  border: none;
-  border-radius: 1.625rem;
-  font-size: 1rem;
-  outline: none;
-  padding: 1rem;
-}
-
-#title {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.amount-date-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-#amount,
-#date > label {
-  display: block;
-}
-
-#amount,
-#date > input {
-  width: 28.125rem;
-}
-
-textarea {
-  border: none;
-  background: #f5f5f5;
-  height: 150px;
-  font-size: 1rem;
-  padding: 1rem;
-  resize: none;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .form-container > div > button {

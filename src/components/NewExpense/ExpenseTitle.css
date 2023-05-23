@@ -1,0 +1,10 @@
+.title-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  grid-area: title;
+}
+
+.title-container > input {
+    width: 90%;
+}

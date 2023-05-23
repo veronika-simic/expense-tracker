@@ -1,0 +1,23 @@
+.date-container {
+  display: flex;
+  flex-direction: column;
+  grid-area: date;
+  row-gap: 0.5rem;
+  justify-content: flex-end;
+  margin-left: 5px;
+}
+
+.date-container .SingleDatePickerInput__withBorder {
+  border: none;
+  width: 100%;
+}
+
+.date-container .DateInput_input {
+  background-color: #f5f5f5;
+  border-radius: 1.625rem;
+  width: max-content;
+}
+
+.date-container .DateInput_input__focused {
+  border-bottom: none;
+}

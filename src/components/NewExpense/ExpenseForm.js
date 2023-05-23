@@ -3,30 +3,47 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
+import ExpenseCategory from "./ExpenseCategory";
+import ExpenseTitle from "./ExpenseTitle";
+import ExpenseAmount from "./ExpenseAmount";
+import ExpenseQuantity from "./ExpenseQuantity";
+import ExpenseDescription from "./ExpenseDescription";
+import ExpenseDate from "./ExpenseDate";
+
 function ExpenseForm() {
-  const [title, setTitle] = useState("");
-  const [amount, setAmount] = useState("");
-  const [date, setDate] = useState("");
-  const [description, setDescription] = useState("");
+  const [expenseTitle, setExpenseTitle] = useState("");
+  const [expenseCategory, setExpenseCategory] = useState("");
+  const [expenseAmount, setExpenseAmount] = useState("");
+  const [expenseQuantity, setExpenseQuantity] = useState("");
+  const [expenseDate, setExpenseDate] = useState("");
+  const [expenseDescription, setExpenseDescription] = useState("");
+
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  function titleChangeHandler(event) {
-    setTitle(event.target.value.trim());
-  }
 
-  function amountChangeHandler(event) {
-    setAmount(event.target.value);
-  }
+  const handleTitleChange = (title) => {
+    setExpenseTitle(title);
+  };
 
-  function dateChangeHandler(event) {
-    setDate(event.target.value);
-  }
+  const handleCategoryChange = (category) => {
+    setExpenseCategory(category);
+  };
 
-  function descriptionChangeHandler(event) {
-    setDescription(event.target.value.trim());
-  }
+  const handleAmountChange = (amount) => {
+    setExpenseAmount(amount);
+  };
+
+  const handleQuantityChange = (quantity) => {
+    setExpenseQuantity(quantity);
+  };
+
+  const handleDateChange = (date) => {
+    setExpenseDate(date);
+  };
+
+  const handleDescriptionChange = (description) => {
+    setExpenseDescription(description);
+  };
 
   function displayConfirmation() {
     toast.success("Expense added");
@@ -35,10 +52,12 @@ function ExpenseForm() {
   async function submitHandler(event) {
     event.preventDefault();
     const expenseData = {
-      title,
-      amount,
-      date,
-      description,
+      expenseTitle,
+      expenseCategory,
+      expenseAmount,
+      expenseQuantity,
+      expenseDate,
+      expenseDescription,
     };
     const response = await fetch("/api/expenses", {
       method: "POST",
@@ -55,10 +74,12 @@ function ExpenseForm() {
     }
     if (response.ok) {
       setError(null);
-      setTitle("");
-      setDate("");
-      setAmount("");
-      setDescription("");
+      setExpenseTitle("");
+      setExpenseCategory("");
+      setExpenseQuantity("");
+      setExpenseDate("");
+      setExpenseAmount("");
+      setExpenseDescription("");
     }
   }
 
@@ -73,72 +94,25 @@ function ExpenseForm() {
         displayConfirmation();
       }}
     >
-      <div>
-        <label htmlFor="title">Title</label>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          onChange={titleChangeHandler}
-          id="title"
-          placeholder="Money spent on...."
-          maxLength={15}
-          required
-          onInvalid={e => e.target.setCustomValidity("Title is required")}
-          onInput={e => e.target.setCustomValidity("")} 
-        ></input>
+      <div className="title-category-container">
+        <ExpenseTitle sendTitle={handleTitleChange} />
+        <ExpenseCategory sendCategory={handleCategoryChange} />
       </div>
-
-      <div className="amount-date-container">
-        <div id="amount">
-          <label htmlFor="amount">Amount</label>
-          <input
-            type="number"
-            name="amount"
-            min="0.1"
-            step="0.01"
-            value={amount}
-            onChange={amountChangeHandler}
-            id="amount"
-            placeholder="Amount spent..."
-            required
-            onInvalid={e => e.target.setCustomValidity("Amount is required")}
-            onInput={e => e.target.setCustomValidity("")} 
-          ></input>
-        </div>
-        <div id="date">
-          <label htmlFor="date">Date</label>
-          <input
-            type="date"
-            name="date"
-            min="2019-01-01"
-            max="2024-01-01"
-            value={date}
-            onChange={dateChangeHandler}
-            id="date"
-            placeholder="Date of purchase"
-            required
-            onInvalid={e => e.target.setCustomValidity("Date is required")}
-            onInput={e => e.target.setCustomValidity("")} 
-          ></input>
-        </div>
+      <div className="amount-quantity-date-container">
+        <ExpenseAmount sendAmount={handleAmountChange} />
+        <ExpenseQuantity sendQuantity={handleQuantityChange} />
+        <ExpenseDate sendDate={handleDateChange} />
       </div>
-
-      <div>
-        <label htmlFor="description">Description</label>
-        <textarea
-          name="description"
-          placeholder="Description (optional)"
-          id="description"
-          onChange={descriptionChangeHandler}
-          value={description}
-        ></textarea>
+      <div className="description-container">
+        <ExpenseDescription sendDescription={handleDescriptionChange} />
       </div>
       <div>
         <button type="button" id="back" onClick={backButtonHandler}>
           Back
         </button>
-        <button type="submit" id="add">Add</button>
+        <button type="submit" id="add">
+          Add
+        </button>
       </div>
     </form>
   );
