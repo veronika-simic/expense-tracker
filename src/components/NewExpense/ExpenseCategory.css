@@ -3,3 +3,39 @@
   flex-direction: column;
   row-gap: 0.5rem;
 }
+
+.category-container > select {
+  outline: 0;
+  flex: 1;
+  padding: 0 1em;
+  cursor: pointer;
+  border: 2px solid gray;
+  font-size: 1rem;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: 0.25em;
+  overflow: hidden;
+}
+
+.select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  transition: 0.25s all ease;
+  pointer-events: none;
+}
+
+.select > option {
+  padding: 2rem;
+}
