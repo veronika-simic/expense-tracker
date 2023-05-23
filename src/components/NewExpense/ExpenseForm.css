@@ -11,19 +11,16 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
-  grid-template-areas: 
-    "title title title quantity"
-   
+  grid-template-areas: "title title title quantity";
 }
 
 .amount-quantity-date-container {
   display: grid;
-  column-gap: 4rem;
-  grid-template-columns: repeat(3,1fr);
+  column-gap: 4.5rem;
+  grid-template-columns: repeat(3,calc((100% - 8rem) / 3));
   grid-template-rows: auto;
   grid-template-areas: "amount quantity date";
 }
-
 
 .form-container {
   font-size: 1.5rem;

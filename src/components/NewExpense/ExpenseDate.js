@@ -20,6 +20,7 @@ function ExpenseDate({ sendDate }) {
         focused={focused}
         onFocusChange={({ focused }) => setFocused(focused)}
         id="date"
+        numberOfMonths={1}
       />
     </div>
   );

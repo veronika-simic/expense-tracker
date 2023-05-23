@@ -4,14 +4,20 @@
   grid-area: date;
   row-gap: 0.5rem;
   justify-content: flex-end;
+  margin-left: 5px;
 }
 
-.SingleDatePicker {
-  /* Styles for the date picker container */
-  color: #03c988;
-
+.date-container .SingleDatePickerInput__withBorder {
+  border: none;
+  width: 100%;
 }
 
-.DateInput_input__focused {
-  border-bottom: 2px solid #03c988 !important;
+.date-container .DateInput_input {
+  background-color: #f5f5f5;
+  border-radius: 1.625rem;
+  width: max-content;
+}
+
+.date-container .DateInput_input__focused {
+  border-bottom: none;
 }
