@@ -1,9 +1,10 @@
 import { useState } from "react";
 import "./ExpenseDescription.css";
-function ExpenseDescription() {
+function ExpenseDescription({sendDescription}) {
   const [description, setDescription] = useState("");
   function descriptionChangeHandler(event) {
     setDescription(event.target.value.trim());
+    sendDescription(description)
   }
 
   return (

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import "./ExpenseAmount.css";
-function ExpenseAmount() {
+function ExpenseAmount({sendAmount}) {
   const [amount, setAmount] = useState("");
   function amountChangeHandler(event) {
     setAmount(event.target.value);
+    sendAmount(amount)
   }
   return (
     <div className="amount-container">

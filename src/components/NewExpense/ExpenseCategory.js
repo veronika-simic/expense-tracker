@@ -1,8 +1,11 @@
+import { useState } from "react";
 import "./ExpenseCategory.css";
 
-function ExpenseCategory() {
+function ExpenseCategory({ sendCategory }) {
+  const [category, setCategory] = useState("");
   function handleCategoryChange(event) {
-    console.log(event.target.value);
+    setCategory(event.target.value);
+    sendCategory(category);
   }
   return (
     <div className="category-container">

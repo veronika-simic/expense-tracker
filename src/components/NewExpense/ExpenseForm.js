@@ -11,20 +11,53 @@ import ExpenseDescription from "./ExpenseDescription";
 import ExpenseDate from "./ExpenseDate";
 
 function ExpenseForm() {
+  const [expenseTitle, setExpenseTitle] = useState("");
+  const [expenseCategory, setExpenseCategory] = useState("");
+  const [expenseAmount, setExpenseAmount] = useState("");
+  const [expenseQuantity, setExpenseQuantity] = useState("");
+  const [expenseDate, setExpenseDate] = useState("");
+  const [expenseDescription, setExpenseDescription] = useState("");
+
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
+  const handleTitleChange = (title) => {
+    setExpenseTitle(title);
+  };
+
+  const handleCategoryChange = (category) => {
+    setExpenseCategory(category);
+  };
+
+  const handleAmountChange = (amount) => {
+    setExpenseAmount(amount);
+  };
+
+  const handleQuantityChange = (quantity) => {
+    setExpenseQuantity(quantity);
+  };
+
+  const handleDateChange = (date) => {
+    setExpenseDate(date);
+  };
+
+  const handleDescriptionChange = (description) => {
+    setExpenseDescription(description);
+  };
 
   function displayConfirmation() {
     toast.success("Expense added");
   }
 
-  /*  async function submitHandler(event) {
+  async function submitHandler(event) {
     event.preventDefault();
     const expenseData = {
-      title,
-      amount,
-      date,
-      description,
+      expenseTitle,
+      expenseCategory,
+      expenseAmount,
+      expenseQuantity,
+      expenseDate,
+      expenseDescription,
     };
     const response = await fetch("/api/expenses", {
       method: "POST",
@@ -41,12 +74,14 @@ function ExpenseForm() {
     }
     if (response.ok) {
       setError(null);
-      setTitle("");
-      setDate("");
-      setAmount("");
-      setDescription("");
+      setExpenseTitle("");
+      setExpenseCategory("");
+      setExpenseQuantity("");
+      setExpenseDate("");
+      setExpenseAmount("");
+      setExpenseDescription("");
     }
-  } */
+  }
 
   function backButtonHandler() {
     navigate("/");
@@ -55,21 +90,21 @@ function ExpenseForm() {
     <form
       className="form-container"
       onSubmit={(event) => {
-        /*   submitHandler(event); */
+        submitHandler(event);
         displayConfirmation();
       }}
     >
       <div className="title-category-container">
-        <ExpenseTitle />
-        <ExpenseCategory />
+        <ExpenseTitle sendTitle={handleTitleChange} />
+        <ExpenseCategory sendCategory={handleCategoryChange} />
       </div>
       <div className="amount-quantity-date-container">
-        <ExpenseAmount />
-        <ExpenseQuantity />
-        <ExpenseDate />
+        <ExpenseAmount sendAmount={handleAmountChange} />
+        <ExpenseQuantity sendQuantity={handleQuantityChange} />
+        <ExpenseDate sendDate={handleDateChange} />
       </div>
       <div className="description-container">
-        <ExpenseDescription />
+        <ExpenseDescription sendDescription={handleDescriptionChange} />
       </div>
       <div>
         <button type="button" id="back" onClick={backButtonHandler}>

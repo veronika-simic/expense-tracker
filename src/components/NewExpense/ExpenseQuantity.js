@@ -1,9 +1,10 @@
 import { useState } from "react";
 import "./ExpenseQuantity.css";
-function ExpenseQuantity() {
+function ExpenseQuantity({sendQuantity}) {
   const [quantity, setQuantity] = useState("");
   function quantityChangeHandler(event) {
     setQuantity(event.target.value.trim());
+    sendQuantity(quantity)
   }
   return (
     <div className="quantity-container">
