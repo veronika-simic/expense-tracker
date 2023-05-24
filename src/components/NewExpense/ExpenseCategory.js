@@ -14,6 +14,7 @@ function ExpenseCategory({ sendCategory }) {
       backgroundColor: "#f5f5f5", // Set the desired background color
       border: "none", // Set the desired border style
       boxShadow: state.isFocused ? "none" : provided.boxShadow,
+      fontSize: '1.25rem'
     }),
   };
   const options = [
