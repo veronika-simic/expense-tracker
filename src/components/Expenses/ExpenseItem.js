@@ -29,7 +29,7 @@ function ExpenseItem(props) {
     navigate(`/${props.item._id}`);
   }
   return (
-    <div className="item-card">
+    <div className="item-card" onClick={infoClickHandler}>
       <h2 className="title">{props.item.title}</h2>
       <ExpenseDate date={props.item.createdAt} />
       <h2>$ {props.item.amount}</h2>
@@ -44,7 +44,7 @@ function ExpenseItem(props) {
           <a id="delete-expense">delete</a>
         </span>
         <Tooltip anchorSelect="#delete-expense" content="Delete expense" />
-        <span class="material-symbols-outlined" onClick={infoClickHandler}>
+        <span className="material-symbols-outlined" onClick={infoClickHandler}>
           <a id="info-expense">Info</a>
         </span>
         <Tooltip anchorSelect="#info-expense" content="Info expense" />
