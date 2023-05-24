@@ -5,7 +5,6 @@ import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 import { useNavigate } from "react-router";
 import ExpenseDate from "./ExpenseDate";
-import Card from "../UI/Card";
 function ExpenseItem(props) {
   const handleDeleteExpense = () => {
     fetch(`/api/expenses/${props.item._id}`, { method: "DELETE" })
@@ -25,18 +24,16 @@ function ExpenseItem(props) {
   function displayDeletedInformation() {
     toast.success("Expense deleted!", { hideProgressBar: true });
   }
-  const navigate = useNavigate()
-  function buttonClickHandler() {
-    navigate(`/${props.item._id}`)
+  const navigate = useNavigate();
+  function infoClickHandler() {
+    navigate(`/${props.item._id}`);
   }
   return (
-    <Card>
+    <div className="item-card" onClick={infoClickHandler}>
       <h2 className="title">{props.item.title}</h2>
       <ExpenseDate date={props.item.createdAt} />
-      <div className="amount">
-        <h2>$ {props.item.amount}</h2>
-      </div>
-     
+      <h2>$ {props.item.amount}</h2>
+      <div className="symbols-container">
         <span
           className="material-symbols-outlined"
           onClick={() => {
@@ -44,14 +41,15 @@ function ExpenseItem(props) {
             handleDeleteExpense();
           }}
         >
-          <a id="delete-expense">delete</a> 
+          <a id="delete-expense">delete</a>
         </span>
-       
-      
-      <Tooltip anchorSelect="#delete-expense" content="Delete expense" />
-          <button onClick={buttonClickHandler}></button>
-      <div className="description">{props.item.description}</div>
-    </Card>
+        <Tooltip anchorSelect="#delete-expense" content="Delete expense" />
+        <span className="material-symbols-outlined" onClick={infoClickHandler}>
+          <a id="info-expense">Info</a>
+        </span>
+        <Tooltip anchorSelect="#info-expense" content="Info expense" />
+      </div>
+    </div>
   );
 }
 
