@@ -3,8 +3,9 @@ import "./ExpenseQuantity.css";
 function ExpenseQuantity({sendQuantity}) {
   const [quantity, setQuantity] = useState("");
   function quantityChangeHandler(event) {
-    setQuantity(event.target.value.trim());
-    sendQuantity(quantity)
+    const updatedQuantity = event.target.value;
+    setQuantity(updatedQuantity);
+    sendQuantity(updatedQuantity);
   }
   return (
     <div className="quantity-container">

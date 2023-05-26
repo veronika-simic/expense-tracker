@@ -2,7 +2,6 @@ import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import { Tooltip } from "react-tooltip";
 import { useNavigate } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
 function Expenses(props) {
   const navigate = useNavigate();
   const navigateToNewExpense = () => {

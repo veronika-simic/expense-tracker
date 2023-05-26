@@ -3,7 +3,7 @@ import "./ExpenseDescription.css";
 function ExpenseDescription({sendDescription}) {
   const [description, setDescription] = useState("");
   function descriptionChangeHandler(event) {
-    setDescription(event.target.value.trim());
+    setDescription(event.target.value);
     sendDescription(description)
   }
 
