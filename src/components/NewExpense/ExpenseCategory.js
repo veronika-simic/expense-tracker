@@ -2,17 +2,18 @@ import { useState } from "react";
 import "./ExpenseCategory.css";
 import Select from "react-select";
 function ExpenseCategory({ sendCategory }) {
-  const [category, setCategory] = useState("");
-  function handleCategoryChange(option) {
-    setCategory(option);
-    sendCategory(category);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  
+  function handleCategoryChange(selectedOption) {
+    setSelectedCategory(selectedOption);
+    sendCategory(selectedOption.value);
   }
 
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
-      backgroundColor: "#f5f5f5", // Set the desired background color
-      border: "none", // Set the desired border style
+      backgroundColor: "#f5f5f5",
+      border: "none", 
       boxShadow: state.isFocused ? "none" : provided.boxShadow,
       fontSize: '1.25rem'
     }),
@@ -31,7 +32,7 @@ function ExpenseCategory({ sendCategory }) {
   return (
     <div className="category-container">
       <label>Category</label>
-      <Select options={options}  styles={customStyles} onChange={handleCategoryChange} placeholder="Select category"/>
+      <Select options={options}  styles={customStyles} onChange={handleCategoryChange} placeholder="Select category" value={selectedCategory}/>
     </div>
   );
 }

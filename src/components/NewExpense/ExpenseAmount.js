@@ -3,8 +3,9 @@ import "./ExpenseAmount.css";
 function ExpenseAmount({sendAmount}) {
   const [amount, setAmount] = useState("");
   function amountChangeHandler(event) {
-    setAmount(event.target.value);
-    sendAmount(amount)
+    const updatedAmount = event.target.value;
+    setAmount(updatedAmount);
+    sendAmount(updatedAmount);
   }
   return (
     <div className="amount-container">

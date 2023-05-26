@@ -12,13 +12,13 @@ import ExpenseDescription from "./ExpenseDescription";
 import ExpenseDate from "./ExpenseDate";
 
 function ExpenseForm() {
-  const {dispatch} = useExpensesContext()
-  const [expenseTitle, setExpenseTitle] = useState("");
-  const [expenseCategory, setExpenseCategory] = useState("");
-  const [expenseAmount, setExpenseAmount] = useState("");
-  const [expenseQuantity, setExpenseQuantity] = useState("");
-  const [expenseDate, setExpenseDate] = useState("");
-  const [expenseDescription, setExpenseDescription] = useState("");
+  const { dispatch } = useExpensesContext();
+  const [title, setExpenseTitle] = useState("");
+  const [category, setExpenseCategory] = useState("");
+  const [amount, setExpenseAmount] = useState("");
+  const [quantity, setExpenseQuantity] = useState("");
+  const [date, setExpenseDate] = useState("");
+  const [description, setExpenseDescription] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ function ExpenseForm() {
   };
 
   const handleAmountChange = (amount) => {
-    setExpenseAmount(amount);
+    setExpenseAmount(parseFloat(amount));
   };
 
   const handleQuantityChange = (quantity) => {
@@ -52,13 +52,14 @@ function ExpenseForm() {
 
   async function submitHandler(event) {
     event.preventDefault();
+    console.log("here");
     const expenseData = {
-      expenseTitle,
-      expenseCategory,
-      expenseAmount,
-      expenseQuantity,
-      expenseDate,
-      expenseDescription,
+      title,
+      category,
+      amount,
+      quantity,
+      date,
+      description
     };
     const response = await fetch("/api/expenses", {
       method: "POST",
@@ -67,7 +68,6 @@ function ExpenseForm() {
         "Content-Type": "application/json",
       },
     });
-
     const json = await response.json();
 
     if (!response.ok) {
@@ -81,7 +81,7 @@ function ExpenseForm() {
       setExpenseDate("");
       setExpenseAmount("");
       setExpenseDescription("");
-      dispatch({type: 'CREATE_EXPENSE', payload: json})
+      dispatch({ type: "CREATE_EXPENSE", payload: json });
     }
   }
 

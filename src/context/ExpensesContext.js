@@ -22,7 +22,7 @@ export const expensesReducer = ( state, action ) => {
   }
 };
 export const ExpensesContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(expensesReducer, { expenses: null });
+  const [state, dispatch] = useReducer(expensesReducer, { expenses: [] });
   return (
     <ExpensesContext.Provider value={{ ...state, dispatch }}>
       {children}
