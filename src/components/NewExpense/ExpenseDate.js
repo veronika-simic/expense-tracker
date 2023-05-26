@@ -24,6 +24,7 @@ function ExpenseDate({ sendDate }) {
         onFocusChange={({ focused }) => setFocused(focused)}
         id="date"
         isOutsideRange={isOutsideRange}
+        numberOfMonths={1}
       />
     </div>
   );

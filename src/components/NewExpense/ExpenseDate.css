@@ -4,7 +4,7 @@
   grid-area: date;
   row-gap: 0.5rem;
   justify-content: flex-end;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .date-container .SingleDatePickerInput__withBorder {
