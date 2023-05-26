@@ -1,5 +1,5 @@
 import ExpenseSearch from "../../components/Expenses/ExpenseSearch";
-import ExpensesAmount from "../../components/Expenses/ExpensesAmount";
+import ExpensesAmount from "../../components/Expenses/ExpensesTotal";
 import Expenses from "../../components/Expenses/Expenses";
 import { useEffect } from "react";
 import { useExpensesContext } from "../../hooks/useExpensesContext";

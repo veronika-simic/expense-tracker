@@ -33,7 +33,7 @@ function ExpenseItem(props) {
     <div className="item-card" onClick={infoClickHandler}>
       <h2 className="title">{props.item.title}</h2>
       <ExpenseDate date={props.item.createdAt} />
-      <h2>$ {props.item.amount}</h2>
+      <h2>$ {props.item.total}</h2>
       <div className="symbols-container">
         <span
           className="material-symbols-outlined"
