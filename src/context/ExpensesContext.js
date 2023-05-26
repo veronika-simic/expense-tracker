@@ -1,7 +1,7 @@
 import { createContext, useReducer } from "react";
 
 export const ExpensesContext = createContext();
-export const expensesReducer = ( state, action ) => {
+export const expensesReducer = (state, action) => {
   switch (action.type) {
     case "SET_EXPENSES":
       return {
@@ -14,7 +14,13 @@ export const expensesReducer = ( state, action ) => {
     case "DELETE_EXPENSE":
       return {
         expenses: state.expenses.filter(
-          (expense) => expense._id !== action.payload._id
+          (expense) => expense._id !== action.payload
+        ),
+      };
+    case "UPDATE_EXPENSE":
+      return {
+        expenses: state.expenses.map((expense) =>
+          expense._id === action.payload._id ? action.payload : expense
         ),
       };
     default:
