@@ -1,5 +1,6 @@
 import "./ExpenseForm.css";
 import { useState } from "react";
+import { useExpensesContext } from "../../hooks/useExpensesContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
@@ -11,13 +12,13 @@ import ExpenseDescription from "./ExpenseDescription";
 import ExpenseDate from "./ExpenseDate";
 
 function ExpenseForm() {
+  const {dispatch} = useExpensesContext()
   const [expenseTitle, setExpenseTitle] = useState("");
   const [expenseCategory, setExpenseCategory] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
   const [expenseQuantity, setExpenseQuantity] = useState("");
   const [expenseDate, setExpenseDate] = useState("");
   const [expenseDescription, setExpenseDescription] = useState("");
-
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -80,6 +81,7 @@ function ExpenseForm() {
       setExpenseDate("");
       setExpenseAmount("");
       setExpenseDescription("");
+      dispatch({type: 'CREATE_EXPENSE', payload: json})
     }
   }
 
