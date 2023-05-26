@@ -6,7 +6,8 @@ import { Tooltip } from "react-tooltip";
 import { useNavigate } from "react-router";
 import ExpenseDate from "./ExpenseDate";
 function ExpenseItem(props) {
-  const handleDeleteExpense = () => {
+  const handleDeleteExpense = (event) => {
+    event.stopPropagation();
     fetch(`/api/expenses/${props.item._id}`, { method: "DELETE" })
       .then((response) => {
         if (response.ok) {
@@ -36,9 +37,9 @@ function ExpenseItem(props) {
       <div className="symbols-container">
         <span
           className="material-symbols-outlined"
-          onClick={() => {
+          onClick={(event) => {
             displayDeletedInformation();
-            handleDeleteExpense();
+            handleDeleteExpense(event);
           }}
         >
           <a id="delete-expense">delete</a>
@@ -47,7 +48,7 @@ function ExpenseItem(props) {
         <span className="material-symbols-outlined" onClick={infoClickHandler}>
           <a id="info-expense">Info</a>
         </span>
-        <Tooltip anchorSelect="#info-expense" content="Info expense" />
+        <Tooltip anchorSelect="#info-expense" content="About expense" />
       </div>
     </div>
   );

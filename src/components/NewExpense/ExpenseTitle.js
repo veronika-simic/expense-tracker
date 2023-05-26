@@ -1,10 +1,11 @@
 import { useState } from "react";
 import "./ExpenseTitle.css";
-function ExpenseTitle({sendTitle}) {
+function ExpenseTitle({ sendTitle }) {
   const [title, setTitle] = useState("");
   function titleChangeHandler(event) {
-    setTitle(event.target.value.trim());
-    sendTitle(title)
+    const updatedTitle = event.target.value;
+    setTitle(updatedTitle);
+    sendTitle(updatedTitle);
   }
   return (
     <div className="title-container">

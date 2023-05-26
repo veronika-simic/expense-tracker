@@ -18,7 +18,7 @@ function HomePage() {
       }
     };
     fetchExpenses();
-  }, []);
+  }, [expenses]);
 
   const handleExpenseDeleted = (expenseId) => {
     dispatch({ type: "DELETE_EXPENSE", payload: expenseId });

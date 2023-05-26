@@ -10,7 +10,7 @@ import "react-tooltip/dist/react-tooltip.css";
 import "./ExpenseItemDashboard.css";
 function ExpenseItemDashboard() {
   const { id } = useParams();
-  const {dispatch} = useExpensesContext()
+  const { dispatch } = useExpensesContext();
   const [expense, setExpense] = useState(null);
   const navigate = useNavigate();
   const navigateToNewExpense = () => {
@@ -40,11 +40,13 @@ function ExpenseItemDashboard() {
     fetchExpense();
   }, [id]);
 
-  const handleDeleteExpense = async() => {
-    const response = await fetch(`/api/expenses/${expense._id}`, {method: 'DELETE'})
-    const json = await response.json()
-    if(response.ok) {
-      dispatch({type: 'DELETE_EXPENSE', payload: json})
+  const handleDeleteExpense = async () => {
+    const response = await fetch(`/api/expenses/${expense._id}`, {
+      method: "DELETE",
+    });
+    const json = await response.json();
+    if (response.ok) {
+      dispatch({ type: "DELETE_EXPENSE", payload: json });
     }
   };
 
@@ -57,34 +59,36 @@ function ExpenseItemDashboard() {
       <h2>Expense information</h2>
       <div className="expense-information">
         <table>
-          <tr>
-            <th>Title</th>
-            <td>{expense?.title}</td>
-          </tr>
-          <tr>
-            <th>Amount</th>
-            <td>$ {expense?.amount}</td>
-          </tr>
-          <tr>
-            <th>Quantity</th>
-            <td>{expense?.quantity}</td>
-          </tr>
-          <tr>
-            <th>Total</th>
-            <td>$ {expense?.amount * expense?.quantity}</td>
-          </tr>
-          <tr>
-            <th>Category</th>
-            <td>{expense?.category}</td>
-          </tr>
-          <tr>
-            <th>Created at</th>
-            <td>{moment(expense?.createdAt).format("DD/MM/YYYY")}</td>
-          </tr>
-          <tr>
-            <th>Description</th>
-            <td>{expense?.description}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <th>Title</th>
+              <td>{expense?.title}</td>
+            </tr>
+            <tr>
+              <th>Amount</th>
+              <td>$ {expense?.amount}</td>
+            </tr>
+            <tr>
+              <th>Quantity</th>
+              <td>{expense?.quantity}</td>
+            </tr>
+            <tr>
+              <th>Total</th>
+              <td>$ {expense?.amount * expense?.quantity}</td>
+            </tr>
+            <tr>
+              <th>Category</th>
+              <td>{expense?.category}</td>
+            </tr>
+            <tr>
+              <th>Created at</th>
+              <td>{moment(expense?.createdAt).format("DD/MM/YYYY")}</td>
+            </tr>
+            <tr>
+              <th>Description</th>
+              <td>{expense?.description}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
       <button className="new-expense" onClick={navigateToNewExpense}>
