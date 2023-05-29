@@ -1,15 +1,17 @@
 import "../../styles/Form.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useLogin } from "../../hooks/useLogin";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  function handleEmailChange(e) {
+  const { login, error, isLoading } = useLogin();
+  async function handleEmailChange(e) {
     setEmail(e.target.value);
+    await login(email, password)
   }
   function handlePasswordChange(e) {
     setPassword(e.target.value);
@@ -33,7 +35,6 @@ function Login() {
       <div>
         <label htmlFor="email">Email</label>
         <input type="email" id="email" onChange={handleEmailChange}></input>
-       
       </div>
       <div>
         <label htmlFor="password">Password</label>
@@ -42,12 +43,10 @@ function Login() {
           id="password"
           onChange={handlePasswordChange}
         ></input>
-       
       </div>
       <div>
-        <button>
-          LOGIN
-        </button>
+        <button disabled={isLoading}>LOGIN</button>
+        {error && <div>{error}</div>}
       </div>
     </form>
   );
