@@ -9,11 +9,11 @@ import { AuthContextProvider } from "./context/AuthContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <ExpensesContextProvider>
-      <AuthContextProvider>
+    <AuthContextProvider>
+      <ExpensesContextProvider>
         <ToastContainer position="bottom-left" theme="light" autoClose={2000} />
         <App />
-      </AuthContextProvider>
-    </ExpensesContextProvider>
+      </ExpensesContextProvider>
+    </AuthContextProvider>
   </BrowserRouter>
 );
