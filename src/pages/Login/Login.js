@@ -1,22 +1,18 @@
 import "../../styles/Form.css";
 import { useNavigate } from "react-router-dom";
-import useFormValidation from "../../hooks/useFormValidation";
+import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function Login() {
   const navigate = useNavigate();
-  const {
-    email,
-    password,
-    emailError,
-    passwordError,
-    handleEmailChange,
-    handlePasswordChange,
-    hasErrors,
-  } = useFormValidation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  function navigateToSignUp() {
-    navigate("/signup");
+  function handleEmailChange(e) {
+    setEmail(e.target.value);
+  }
+  function handlePasswordChange(e) {
+    setPassword(e.target.value);
   }
 
   function navigateToHomePage() {
@@ -27,12 +23,17 @@ function Login() {
     toast.success("Logged in successfully");
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    console.log(email, password);
+  }
+
   return (
-    <form className="info-container">
+    <form className="info-container" onSubmit={handleSubmit}>
       <div>
         <label htmlFor="email">Email</label>
         <input type="email" id="email" onChange={handleEmailChange}></input>
-        {emailError ? <p>{emailError}</p> : ""}
+       
       </div>
       <div>
         <label htmlFor="password">Password</label>
@@ -41,16 +42,10 @@ function Login() {
           id="password"
           onChange={handlePasswordChange}
         ></input>
-        {passwordError ? <p>{passwordError}</p> : ""}
+       
       </div>
       <div>
-        <button
-          disabled={hasErrors()}
-          onClick={() => {
-            displayLoginConfirmation();
-            navigateToHomePage();
-          }}
-        >
+        <button>
           LOGIN
         </button>
       </div>
