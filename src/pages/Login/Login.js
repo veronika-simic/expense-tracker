@@ -11,7 +11,7 @@ function Login() {
   const { login, error, isLoading } = useLogin();
   async function handleEmailChange(e) {
     setEmail(e.target.value);
-    await login(email, password)
+   
   }
   function handlePasswordChange(e) {
     setPassword(e.target.value);
@@ -27,7 +27,7 @@ function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(email, password);
+    await login(email, password);
   }
 
   return (
