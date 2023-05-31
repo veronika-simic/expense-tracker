@@ -7,6 +7,7 @@ import { useSignup } from "../../hooks/useSignup";
 function SignUp({ onFormChange }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmedPassword, setConfirmedPassword] = useState("")
   const { signup, error, isLoading } = useSignup();
 
   function handleEmailChange(e) {
@@ -15,13 +16,16 @@ function SignUp({ onFormChange }) {
   function handlePasswordChange(e) {
     setPassword(e.target.value);
   }
+  function handleConfirmedPasswordChange(e) {
+    setConfirmedPassword(e.target.value)
+  }
   function handleLoginLinkClick() {
     onFormChange("login");
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await signup(email, password);
+    await signup(email, password, confirmedPassword);
   }
 
   function displaySignUpInformation() {
@@ -35,7 +39,7 @@ function SignUp({ onFormChange }) {
         <input type="email" id="email" onChange={handleEmailChange}></input>
       </div>
       <div>
-        <label htmlFor="password">Your Password</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
@@ -43,7 +47,15 @@ function SignUp({ onFormChange }) {
         ></input>
       </div>
       <div>
-        <button disabled={!isLoading}>SIGN UP</button>
+        <label htmlFor="confirm-password">Confirm Password</label>
+        <input
+          type="password"
+          id="confirm-password"
+          onChange={handleConfirmedPasswordChange}
+        ></input>
+      </div>
+      <div>
+        <button disabled={isLoading}>SIGN UP</button>
         {error && <div>{error}</div>}
       </div>
       <p>

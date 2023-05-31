@@ -2,7 +2,7 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import "./FormContainer.css";
 import { useState } from "react";
-function FormContainer() {
+function FormContainer({selected}) {
   const [selectedForm, setSelectedForm] = useState("login");
   const [selectedButton, setSelectedButton] = useState("login-button");
 

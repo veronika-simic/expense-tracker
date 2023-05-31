@@ -8,6 +8,8 @@ import NotFound from "./pages/NotFound/NotFound";
 import WithNav from "./routes/WithNav";
 import ExpenseItemDashboard from "./pages/ExpenseItemDashboard/ExpenseItemDashboard";
 import ExpenseForm from "./components/NewExpense/ExpenseForm";
+import Login from "./components/Form/Login";
+import SignUp from "./components/Form/SignUp";
 
 function App() {
   const { user } = useAuthContext();
@@ -20,12 +22,12 @@ function App() {
         />
         <Route
           path="/login"
-          element={!user ? <FormContainer /> : <Navigate to="/" />}
+          element={!user ? <Login/> : <Navigate to="/" />}
         />
         <Route path="/newexpense" element={<NewExpense />} />
         <Route
           path="/signup"
-          element={!user ? <FormContainer /> : <Navigate to="/" />}
+          element={!user ? <SignUp /> : <Navigate to="/" />}
         />
         <Route path="/:id" element={<ExpenseItemDashboard />} />
         <Route path="update/:id" element={<ExpenseForm />} />
