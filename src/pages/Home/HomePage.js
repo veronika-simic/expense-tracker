@@ -3,22 +3,30 @@ import ExpensesAmount from "../../components/Expenses/ExpensesTotal";
 import Expenses from "../../components/Expenses/Expenses";
 import { useEffect } from "react";
 import { useExpensesContext } from "../../hooks/useExpensesContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
 import NoExpenses from "../../components/Expenses/NoExpenses";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import "./HomePage.css";
 function HomePage() {
   const { expenses, dispatch } = useExpensesContext();
+  const { user } = useAuthContext();
   useEffect(() => {
     const fetchExpenses = async () => {
-      const response = await fetch("/api/expenses");
+      const response = await fetch("/api/expenses", {
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+      });
       const json = await response.json();
       if (response.ok) {
         dispatch({ type: "SET_EXPENSES", payload: json });
       }
     };
-    fetchExpenses();
-  }, []);
+    if (user) {
+      fetchExpenses();
+    }
+  }, [dispatch, user]);
 
   const handleExpenseDeleted = (expenseId) => {
     dispatch({ type: "DELETE_EXPENSE", payload: expenseId });

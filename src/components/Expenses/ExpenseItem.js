@@ -4,22 +4,27 @@ import "react-toastify/dist/ReactToastify.css";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 import { useNavigate } from "react-router";
+import { useAuthContext } from "../../hooks/useAuthContext";
 import ExpenseDate from "./ExpenseDate";
+import { useExpensesContext } from "../../hooks/useExpensesContext";
 function ExpenseItem(props) {
-  const handleDeleteExpense = (event) => {
+  const { dispatch } = useExpensesContext();
+  const { user } = useAuthContext();
+  const handleDeleteExpense = async (event) => {
     event.stopPropagation();
-    fetch(`/api/expenses/${props.item._id}`, { method: "DELETE" })
-      .then((response) => {
-        if (response.ok) {
-          console.log("Expense deleted");
-          props.onExpenseDeleted(props.item._id);
-        } else {
-          console.log("Failed");
-        }
-      })
-      .catch((error) => {
-        console.error("Error while deleting expense:", error);
-      });
+    if (!user) {
+      return;
+    }
+    const response = await fetch(`/api/expenses/${props.item._id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+    const json = await response.json();
+    if (response.ok) {
+      dispatch({ type: "DELETE_EXPENSE", payload: json });
+    }
   };
 
   function displayDeletedInformation() {

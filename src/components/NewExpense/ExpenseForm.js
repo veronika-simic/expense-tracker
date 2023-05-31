@@ -1,6 +1,7 @@
 import "./ExpenseForm.css";
 import { useState } from "react";
 import { useExpensesContext } from "../../hooks/useExpensesContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
@@ -13,6 +14,7 @@ import ExpenseDate from "./ExpenseDate";
 
 function ExpenseForm() {
   const { dispatch } = useExpensesContext();
+  const { user } = useAuthContext();
   const [title, setExpenseTitle] = useState("");
   const [category, setExpenseCategory] = useState("");
   const [amount, setExpenseAmount] = useState("");
@@ -52,20 +54,24 @@ function ExpenseForm() {
 
   async function submitHandler(event) {
     event.preventDefault();
-    console.log("here");
+    if (!user) {
+      setError("You must be logged in");
+      return;
+    }
     const expenseData = {
       title,
       category,
       amount,
       quantity,
       date,
-      description
+      description,
     };
     const response = await fetch("/api/expenses", {
       method: "POST",
       body: JSON.stringify(expenseData),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
       },
     });
     const json = await response.json();
@@ -115,6 +121,7 @@ function ExpenseForm() {
         <button type="submit" id="add">
           Add
         </button>
+        {error && <div>{error}</div>}
       </div>
     </form>
   );
