@@ -96,7 +96,7 @@ function ExpenseForm() {
   }
   return (
     <form
-      className="form-container"
+      className="expenses-form-container"
       onSubmit={(event) => {
         submitHandler(event);
         displayConfirmation();

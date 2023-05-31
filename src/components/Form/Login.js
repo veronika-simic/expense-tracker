@@ -1,32 +1,33 @@
+import "../../styles/Form.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "../../styles/Form.css";
+import { useLogin } from "../../hooks/useLogin";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useSignup } from "../../hooks/useSignup";
-function SignUp() {
+function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { signup, error, isLoading } = useSignup();
-  const navigate = useNavigate();
-
-  function handleEmailChange(e) {
+  const { login, error, isLoading } = useLogin();
+  async function handleEmailChange(e) {
     setEmail(e.target.value);
+   
   }
   function handlePasswordChange(e) {
     setPassword(e.target.value);
   }
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    await signup(email, password);
-  }
   function navigateToHomePage() {
     navigate("/home");
   }
 
-  function displaySignUpInformation() {
-    toast.success("User signed up!");
+  function displayLoginConfirmation() {
+    toast.success("Logged in successfully");
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    await login(email, password);
   }
 
   return (
@@ -36,7 +37,7 @@ function SignUp() {
         <input type="email" id="email" onChange={handleEmailChange}></input>
       </div>
       <div>
-        <label htmlFor="password">Your Password</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
@@ -44,11 +45,12 @@ function SignUp() {
         ></input>
       </div>
       <div>
-        <button disabled={isLoading}>SIGN UP</button>
+        <button disabled={isLoading}>LOGIN</button>
         {error && <div>{error}</div>}
       </div>
+      <p>Don't have an account? Sign up</p>
     </form>
   );
 }
 
-export default SignUp;
+export default Login;

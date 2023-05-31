@@ -15,7 +15,7 @@ function NavigationBar() {
           EXPENSE <br></br> TRACKER
         </Link>
       </h1>
-      {!user && (
+     {/*  {!user && (
         <>
           <Link to="/signup">
             <h2>Sign up</h2>
@@ -24,7 +24,7 @@ function NavigationBar() {
             <h2>Login</h2>
           </Link>
         </>
-      )}
+      )} */}
 
       {user && (
         <>
