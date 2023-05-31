@@ -3,10 +3,12 @@ import { useState } from "react";
 import { useLogin } from "../../hooks/useLogin";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 function Login({ onFormChange }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, error, isLoading } = useLogin();
+  const { login, error } = useLogin();
+  const navigate = useNavigate()
   function handleEmailChange(e) {
     setEmail(e.target.value);
   }
@@ -26,6 +28,7 @@ function Login({ onFormChange }) {
     if (!error) {
       displayLoginConfirmation();
     }
+    navigate("/")
   }
 
   return (

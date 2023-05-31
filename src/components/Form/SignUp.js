@@ -8,8 +8,8 @@ function SignUp({ onFormChange }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
-  const { signup, error, isLoading } = useSignup();
-
+  const { signup, error } = useSignup();
+  const navigate = useNavigate();
   function handleEmailChange(e) {
     setEmail(e.target.value);
   }
@@ -31,6 +31,7 @@ function SignUp({ onFormChange }) {
     if (!error) {
       displaySignUpInformation();
     }
+    navigate("/");
   }
 
   return (
