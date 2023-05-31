@@ -7,7 +7,7 @@ import { useSignup } from "../../hooks/useSignup";
 function SignUp({ onFormChange }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmedPassword, setConfirmedPassword] = useState("")
+  const [confirmedPassword, setConfirmedPassword] = useState("");
   const { signup, error, isLoading } = useSignup();
 
   function handleEmailChange(e) {
@@ -17,19 +17,20 @@ function SignUp({ onFormChange }) {
     setPassword(e.target.value);
   }
   function handleConfirmedPasswordChange(e) {
-    setConfirmedPassword(e.target.value)
+    setConfirmedPassword(e.target.value);
   }
   function handleLoginLinkClick() {
     onFormChange("login");
   }
-
+  function displaySignUpInformation() {
+    toast.success("User signed up!");
+  }
   async function handleSubmit(e) {
     e.preventDefault();
     await signup(email, password, confirmedPassword);
-  }
-
-  function displaySignUpInformation() {
-    toast.success("User signed up!");
+    if (!error) {
+      displaySignUpInformation();
+    }
   }
 
   return (
@@ -55,7 +56,7 @@ function SignUp({ onFormChange }) {
         ></input>
       </div>
       <div>
-        <button disabled={isLoading}>SIGN UP</button>
+        <button type="submit">SIGN UP</button>
         {error && <div>{error}</div>}
       </div>
       <p>

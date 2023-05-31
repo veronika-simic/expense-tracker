@@ -23,6 +23,9 @@ function Login({ onFormChange }) {
   async function handleSubmit(e) {
     e.preventDefault();
     await login(email, password);
+    if (!error) {
+      displayLoginConfirmation();
+    }
   }
 
   return (
@@ -40,7 +43,7 @@ function Login({ onFormChange }) {
         ></input>
       </div>
       <div>
-        <button disabled={!isLoading}>LOGIN</button>
+        <button type="submit">LOGIN</button>
         {error && <div>{error}</div>}
       </div>
       <p>
