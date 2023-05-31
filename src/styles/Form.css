@@ -31,3 +31,19 @@
 .info-container div button:enabled:hover {
   cursor: pointer;
 }
+
+.info-container > p {
+  font-size: 1.25rem;
+}
+
+.info-container > p > button {
+  color: white;
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 1.25rem;
+}
+
+.info-container > p > button:hover {
+  cursor: pointer;
+}

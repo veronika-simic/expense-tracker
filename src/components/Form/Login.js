@@ -1,26 +1,21 @@
 import "../../styles/Form.css";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useLogin } from "../../hooks/useLogin";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-function Login() {
-  const navigate = useNavigate();
+function Login({ onFormChange }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, error, isLoading } = useLogin();
-  async function handleEmailChange(e) {
+  function handleEmailChange(e) {
     setEmail(e.target.value);
-   
   }
   function handlePasswordChange(e) {
     setPassword(e.target.value);
   }
-
-  function navigateToHomePage() {
-    navigate("/home");
-  }
-
+  const handleSignUpLinkClick = () => {
+    onFormChange("signup");
+  };
   function displayLoginConfirmation() {
     toast.success("Logged in successfully");
   }
@@ -48,7 +43,12 @@ function Login() {
         <button disabled={isLoading}>LOGIN</button>
         {error && <div>{error}</div>}
       </div>
-      <p>Don't have an account? Sign up</p>
+      <p>
+        Don't have an account?
+        <button type="button" onClick={handleSignUpLinkClick}>
+          Sign up
+        </button>
+      </p>
     </form>
   );
 }

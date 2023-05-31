@@ -3,21 +3,28 @@ import SignUp from "./SignUp";
 import "./FormContainer.css";
 import { useState } from "react";
 function FormContainer() {
-  const [selectedButton, setSelectedButton] = useState("signup-button");
-  const [title, setTitle] = useState("Sign up");
-  const handleButtonClick = (buttonId) => {
-    setSelectedButton(buttonId);
+  const [selectedForm, setSelectedForm] = useState("login");
+  const [selectedButton, setSelectedButton] = useState("login-button");
+
+  const handleFormChange = (form) => {
+    setSelectedForm(form);
+    setSelectedButton(form + "-button");
   };
+
+  const handleButtonClick = (button_id) => {
+    setSelectedButton(button_id);
+  };
+
   return (
     <div className="form-container">
-      <h2>{title} Form</h2>
+      <h2>{selectedForm === "login" ? "Login" : "Sign up"} Form</h2>
       <div className="buttons">
         <button
           id="login-button"
           className={selectedButton === "login-button" ? "selected" : ""}
           onClick={() => {
             handleButtonClick("login-button");
-            setTitle("Login");
+            handleFormChange("login");
           }}
         >
           Login
@@ -27,13 +34,17 @@ function FormContainer() {
           className={selectedButton === "signup-button" ? "selected" : ""}
           onClick={() => {
             handleButtonClick("signup-button");
-            setTitle("Sign up");
+            handleFormChange("signup");
           }}
         >
           Sign up
         </button>
       </div>
-      {selectedButton === "login-button" ? <Login /> : <SignUp />}
+      {selectedForm === "login" ? (
+        <Login onFormChange={handleFormChange} />
+      ) : (
+        <SignUp onFormChange={handleFormChange} />
+      )}
     </div>
   );
 }
