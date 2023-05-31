@@ -40,7 +40,7 @@ function Login({ onFormChange }) {
         ></input>
       </div>
       <div>
-        <button disabled={isLoading}>LOGIN</button>
+        <button disabled={!isLoading}>LOGIN</button>
         {error && <div>{error}</div>}
       </div>
       <p>

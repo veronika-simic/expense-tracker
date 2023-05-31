@@ -43,7 +43,7 @@ function SignUp({ onFormChange }) {
         ></input>
       </div>
       <div>
-        <button disabled={isLoading}>SIGN UP</button>
+        <button disabled={!isLoading}>SIGN UP</button>
         {error && <div>{error}</div>}
       </div>
       <p>
