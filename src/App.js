@@ -1,6 +1,6 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
-
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext";
 import NewExpense from "./components/NewExpense/NewExpense";
 import HomePage from "./pages/Home/HomePage";
 import Login from "./pages/Login/Login";
@@ -11,13 +11,23 @@ import ExpenseItemDashboard from "./pages/ExpenseItemDashboard/ExpenseItemDashbo
 import ExpenseForm from "./components/NewExpense/ExpenseForm";
 
 function App() {
+  const { user } = useAuthContext();
   return (
     <Routes>
       <Route element={<WithNav />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/"
+          element={user ? <HomePage /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/login"
+          element={!user ? <Login /> : <Navigate to="/" />}
+        />
         <Route path="/newexpense" element={<NewExpense />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route
+          path="/signup"
+          element={!user ? <SignUp /> : <Navigate to="/" />}
+        />
         <Route path="/:id" element={<ExpenseItemDashboard />} />
         <Route path="update/:id" element={<ExpenseForm />} />
       </Route>
