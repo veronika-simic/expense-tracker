@@ -28,10 +28,7 @@ function SignUp({ onFormChange }) {
   async function handleSubmit(e) {
     e.preventDefault();
     await signup(email, password, confirmedPassword);
-    if (!error) {
-      displaySignUpInformation();
-    }
-    navigate("/");
+   
   }
 
   return (
@@ -57,7 +54,7 @@ function SignUp({ onFormChange }) {
         ></input>
       </div>
       <div>
-        <button type="submit">SIGN UP</button>
+        <button>SIGN UP</button>
         {error && <div>{error}</div>}
       </div>
       <p>

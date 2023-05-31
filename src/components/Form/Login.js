@@ -8,7 +8,7 @@ function Login({ onFormChange }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, error } = useLogin();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   function handleEmailChange(e) {
     setEmail(e.target.value);
   }
@@ -18,17 +18,10 @@ function Login({ onFormChange }) {
   const handleSignUpLinkClick = () => {
     onFormChange("signup");
   };
-  function displayLoginConfirmation() {
-    toast.success("Logged in successfully");
-  }
 
   async function handleSubmit(e) {
     e.preventDefault();
     await login(email, password);
-    if (!error) {
-      displayLoginConfirmation();
-    }
-    navigate("/")
   }
 
   return (
@@ -43,10 +36,11 @@ function Login({ onFormChange }) {
           type="password"
           id="password"
           onChange={handlePasswordChange}
+          autoComplete="on"
         ></input>
       </div>
       <div>
-        <button type="submit">LOGIN</button>
+        <button>LOGIN</button>
         {error && <div>{error}</div>}
       </div>
       <p>
