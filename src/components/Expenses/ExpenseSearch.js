@@ -10,7 +10,7 @@ function ExpenseSearch() {
     setSearchInput(e.target.value);
   };
   const { user } = useAuthContext();
-  const { dispatch } = useExpensesContext();
+  const { expenses, dispatch } = useExpensesContext();
   useEffect(() => {
     const fetchExpenses = async () => {
       const response = await fetch(`/api/expenses?title=${searchInput}`, {
@@ -19,19 +19,13 @@ function ExpenseSearch() {
         },
       });
       const json = await response.json();
-      console.log(json);
 
-      if (!response.ok) {
-        dispatch({ type: "SET_EXPENSES", payload: json });
-      }
-      if (json.title) {
-        
-      }
+      
     };
     if (user) {
       fetchExpenses();
     }
-  }, [dispatch, searchInput, user]);
+  }, [dispatch, searchInput, expenses, user]);
 
   return (
     <>

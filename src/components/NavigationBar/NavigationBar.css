@@ -4,13 +4,23 @@
   align-items: center;
 }
 
-.navigation > h2 {
-  color: #9ba4b5;
-  font-size: 1.5rem;
-  font-weight: 200;
-}
-
 .navigation > h1 > a {
   color: black;
   text-decoration: none;
+}
+
+.navigation > .user-name  {
+  
+}
+
+.navigation > .user-name > h2 {
+  color: #9ba4b5;
+  display: inline;
+  font-size: 1.25rem;
+  font-weight: 200;
+  margin-right: 1rem;
+}
+
+.navigation > .user-name > span:hover {
+  cursor: pointer;
 }
